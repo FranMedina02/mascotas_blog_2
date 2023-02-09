@@ -10,8 +10,8 @@ class User(models.Model):
 
 class Post(models.Model):
 
-    id_img = models.ImageField(primary_key=True,upload_to='post_imgs', null=True)
-
+    id_img = models.ImageField(upload_to='post_imgs')
+    id_post = models.AutoField(primary_key=True)
     title = models.CharField(max_length=25)
     subtitle = models.CharField(max_length=35)
     description = models.TextField(max_length=255)
