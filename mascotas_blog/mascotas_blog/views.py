@@ -5,7 +5,7 @@ def home(request):
 
     data = {}
 
-    plantilla = loader.get_template('probando_feed.html')
+    plantilla = loader.get_template('home.html')
     document = plantilla.render(data)
 
     return HttpResponse(document)
