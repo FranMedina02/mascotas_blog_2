@@ -2,7 +2,19 @@ from django.http import HttpResponse
 from django.template import loader
 
 def home(request):
-    plantilla = loader.get_template('index.html')
-    document = plantilla.render()
+
+    data = {}
+
+    plantilla = loader.get_template('probando_feed.html')
+    document = plantilla.render(data)
+
+    return HttpResponse(document)
+
+def login(request):
+
+    data = {}
+
+    plantilla = loader.get_template('login.html')
+    document = plantilla.render(data)
 
     return HttpResponse(document)

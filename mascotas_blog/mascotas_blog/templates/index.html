@@ -7,6 +7,40 @@
     <title>Document</title>
 </head>
 <body>
-    Hola
+    <header>
+        <nav>
+            <div class="container">
+
+                <a href="{% url 'Home' %}">Inicio</a>
+                <a href="">Inicio</a>
+                <a href="">Inicio</a>
+                <a href="">Inicio</a>
+                <a href="{% url 'Log in' %}">Log in</a>
+
+            </div>
+        </nav>
+    </header>
+    <section>
+        {% block feed %}
+
+        {% endblock feed %}
+    </section>
+
+    <footer>
+        <nav>
+            <div>
+                <h2>
+
+                    <span>instagram -</span>
+                    <span>facebook -</span>
+                    <span>twitter -</span>
+                    <span>logo -</span>
+                    <span>about us</span>
+                </h2>
+            </div>
+        </nav>
+    </footer>
+
 </body>
 </html>
+
