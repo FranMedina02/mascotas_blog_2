@@ -1,20 +1,18 @@
 from django.http import HttpResponse 
-from django.template import loader
+from django.shortcuts import render
 
 def home(request):
 
-    data = {}
+    context = {}
 
-    plantilla = loader.get_template('home.html')
-    document = plantilla.render(data)
+    template = 'home.html'
 
-    return HttpResponse(document)
+    return render(request, template, context)
 
 def login(request):
 
-    data = {}
+    context = {}
 
-    plantilla = loader.get_template('login.html')
-    document = plantilla.render(data)
+    template = 'login.html'
 
-    return HttpResponse(document)
+    return render(request, template, context)
