@@ -1,0 +1,17 @@
+
+{% extends "home.html" %}
+{% block feed %}
+
+    <ul>
+        {% for post in posts %}
+            <li>{{post.id_post}}</li>
+            <li>{{post.title}}</li>
+            <li>{{post.subtitle}}</li>
+            <li>{{post.description}}</li>
+            <li>{{post.id_user}}</li>
+
+        {% endfor %}
+
+    </ul>
+
+{% endblock feed %}
