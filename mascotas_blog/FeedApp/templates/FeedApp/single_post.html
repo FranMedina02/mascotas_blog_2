@@ -4,8 +4,8 @@
 
     <ul>
         
-        {% if posts %}
-            {% for post in posts %}
+        {% if post %}
+
                 <li>{{post.id_post}}</li>
                 <li>{{post.title}}</li>
                 <li>{{post.subtitle}}</li>
@@ -13,8 +13,6 @@
                 <li>{{post.id_user}}</li>
                 <li><img class="post_img"  src="../media/{{post.id_img}}" alt="No se puede mostrar"></li>
                 
-
-            {% endfor %}
         {% else %}
             <p>No hay posts disponibles</p>
         {% endif %}

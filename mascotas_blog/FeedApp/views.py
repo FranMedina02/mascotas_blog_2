@@ -18,13 +18,19 @@ def login(request):
 
     return render(request, template, context)
 
-def posts(request):
+def posts(request, id_post=None):
 
     posts = Post.objects.all()
-    
-
+    template = 'FeedApp/post.html'
     context = {'posts':posts}
 
-    template = 'FeedApp/post.html'
+    return render(request, template, context)
+
+
+def single_post(request, id_post):
+    
+    post = Post.objects.get(id_post=id_post)
+    template = 'FeedApp/single_post.html'
+    context = {'post':post}
 
     return render(request, template, context)
