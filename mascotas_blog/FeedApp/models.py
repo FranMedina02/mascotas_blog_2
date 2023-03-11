@@ -1,5 +1,5 @@
 from django.db import models
-from UserApp.models import *
+from UserApp.models import User
 from time import time
 from uuid import uuid4
 import os
