@@ -1,5 +1,5 @@
 from django.db import models
-from FeedApp.models import User
+from UserApp.models import User
 
 # Create your models here.
 class Chat(models.Model):
