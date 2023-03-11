@@ -1,0 +1,24 @@
+{% extends "FeedApp/home.html" %}
+{% load static %}
+{% block feed %}
+
+    <ul>
+        
+        {% if posts %}
+            {% for post in posts %}
+                <li>{{post.id_post}}</li>
+                <li>{{post.title}}</li>
+                <li>{{post.subtitle}}</li>
+                <li>{{post.description}}</li>
+                <li>{{post.id_user}}</li>
+                <li><img class="post_img"  src="../media/{{post.id_img}}" alt="No se puede mostrar"></li>
+                
+
+            {% endfor %}
+        {% else %}
+            <p>No hay posts disponibles</p>
+        {% endif %}
+
+    </ul>
+
+{% endblock feed %}

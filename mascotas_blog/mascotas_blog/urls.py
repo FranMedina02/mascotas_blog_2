@@ -16,15 +16,13 @@ Including another URLconf
 
 
 from django.contrib import admin
-from django.urls import path
-import mascotas_blog.views as views
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='Home'),
-    path('login/', views.login, name='Log in'),
+    path('', include('FeedApp.urls')),
 ]
 
 urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
