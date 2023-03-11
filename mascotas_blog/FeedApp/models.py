@@ -27,6 +27,6 @@ class Post(models.Model):
                                 max_length=255, null=True, blank=True)
 
     def __str__(self) -> str:
-        return str((self.id_post, self.id_img))
+        return f'id: {self.id_post} - title: {self.title} - img: {self.id_img}'
 
     
