@@ -11,14 +11,19 @@
                 <li>{{post.subtitle}}</li>
                 <li>{{post.description}}</li>
                 <li>{{post.id_user}}</li>
-                <li><img class="post_img"  src="../media/{{post.id_img}}" alt="No se puede mostrar"></li>
+                <li>
+                    <a href="{% url 'Single Post' id_post=post.id_post %}">
+                        <img class="post_img"  src="../media/{{post.id_img}}" alt="No se puede mostrar">
+                    </a>
+                </li>
                 
 
             {% endfor %}
         {% else %}
             <p>No hay posts disponibles</p>
         {% endif %}
-
+        
     </ul>
+
 
 {% endblock feed %}
