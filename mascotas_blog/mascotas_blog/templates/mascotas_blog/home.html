@@ -1,50 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'FeedApp/css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-</head>
-<body>
-    
-    <header>
-        <nav>
-            <div class="container">
-                <a href="{% url 'Home' %}">Logo</a>
-                <a href="{% url 'Home' %}">Home</a>
-                <a href="">Crear</a>
-                <span>Barra de busqueda</span> <!--Temporal-->
-                <a href="">Notificaciones</a>
-                <a href="{% url 'Log in' %}">Avatar</a>
+	<head>
+		{% load static %}
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="{% static 'FeedApp/css/styles.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+	</head>
+	<body>
+		{% comment "" %}
+		<header>
+			<nav>
+				<div class="container">
+					<a href="{% url 'Home' %}">Home</a>
+					<a href="">Crear</a>
+					<span>Barra de busqueda</span>
+					<!--Temporal-->
+					<a href="">Notificaciones</a>
+					<a href="{% url 'Log in' %}">Avatar</a>
+				</div>
+			</nav>
+		</header>
+		{% endcomment %}
+		<header class="p-3 mb-3 border-bottom fixed-top">
+			<div class="container">
+				<div
+					class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+					<a
+						href="{% url 'About Us' %}"
+						class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+						<img
+							class="bi me-2"
+							width="40"
+							height="32"
+							src="{% static 'assets/icons/logo.svg' %}" />
+					</a>
 
-            </div>
-        </nav>
-    </header>
-    <section>
-        {% block feed %}
-            
-        {% endblock feed %}
-    </section>
+					<ul
+						class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+						<li>
+							<a href="{% url 'Home' %}" class="nav-link px-2 link-secondary">Home</a>
+						</li>
+						<li>
+							<a
+								href="{% url 'Crear Post' %}"
+								class="nav-link btn btn-light px-2 link-dark"
+								role="button"
+								>Crear</a
+							>
+						</li>
+					</ul>
 
-    <footer>
-        <nav>
-            <div>
-                <h2>
+					<form
+						action="{% url 'Search' %}"
+						method="post"
+						class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
+						role="search">
+						<input
+							type="search"
+							class="form-control"
+							placeholder="Search..."
+							aria-label="Search" />
+					</form>
 
-                    <span>instagram -</span>
-                    <span>facebook -</span>
-                    <span>twitter -</span>
-                    <span>logo -</span>
-                    <span>about us</span>
-                </h2>
-            </div>
-        </nav>
-    </footer>
+					<a
+						href="{% url 'Chats' %}"
+						class="d-flex btn btn-light align-items-center mb-2 mb-lg-0 me-lg-3 p-1 rounded-circle"
+						role="button">
+						<img
+							class="bi"
+							width="30"
+							height="30"
+							src="{% static 'assets/icons/bell-mty.svg' %}" />
+					</a>
 
-</body>
+					<div class="dropdown text-end">
+						<a
+							href="{% url 'Profile' %}"
+							class="d-block link-dark text-decoration-none dropdown-toggle"
+							data-bs-toggle="dropdown"
+							aria-expanded="false">
+							<img {% comment "media avatar" %}{% endcomment %}
+							src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
+							class="rounded-circle" />
+						</a>
+
+						<ul class="dropdown-menu text-small">
+							<li>
+								<a class="dropdown-item" href="{% url 'Crear Post' %}"
+									>New post...</a
+								>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{% url 'User Settings' %}"
+									>Settings</a
+								>
+							</li>
+							<li><a class="dropdown-item" href="{% url 'Profile' %}">Profile</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li>
+								<a class="dropdown-item" href="{% url 'Log Out' %}">Sign out</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		{% comment "" %}
+		<section>{% block feed %} {% endblock feed %}</section>
+		{% endcomment %}
+
+		<footer
+			class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top fixed-bottom px-4">
+			<div class="col-md-4 d-flex align-items-center">
+				<a
+					href="{% url 'About Us' %}"
+					class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+					<img
+						class="bi"
+						width="30"
+						height="24"
+						src="{% static 'assets/icons/logo.svg' %}" />
+				</a>
+				<span class="mb-3 mb-md-0 text-muted">© 2023 Francisco Medina</span>
+			</div>
+
+			<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+				<li class="ms-3">
+					<a
+						class="text-muted"
+						target="_blank"
+						href="https://www.instagram.com/fran_medin.c/">
+						<img
+							class="bi"
+							width="24"
+							height="24"
+							src="{% static 'assets/icons/ig.svg' %}" />
+					</a>
+				</li>
+				<li class="ms-3">
+					<a
+						class="text-muted"
+						target="_blank"
+						href="https://www.twitter.com/Fran22964554">
+						<img
+							class="bi"
+							width="24"
+							height="24"
+							src="{% static 'assets/icons/tw.svg' %}" />
+					</a>
+				</li>
+				<li class="ms-3">
+					<a
+						class="text-muted"
+						target="_blank"
+						href="https://www.facebook.com/profile.php?id=100011176805886">
+						<img
+							class="bi"
+							width="24"
+							height="24"
+							src="{% static 'assets/icons/fb.svg' %}" />
+					</a>
+				</li>
+			</ul>
+		</footer>
+
+		<script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+	</body>
 </html>
-
