@@ -1,4 +1,4 @@
-{% extends "FeedApp/home.html" %}
+{% extends "mascotas_blog/home.html" %}
 {% load static %}
 {% block feed %}
 
@@ -19,4 +19,8 @@
 
     </ul>
 
+    <a href="{% url 'Home' %}">
+        volver
+    </a>
+    
 {% endblock feed %}
