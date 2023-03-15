@@ -29,7 +29,7 @@
 				<div
 					class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 					<a
-						href="{% url 'Home' %}"
+						href="{% url 'About Us' %}"
 						class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
 						<img
 							class="bi me-2"
@@ -40,15 +40,24 @@
 
 					<ul
 						class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-						<li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
 						<li>
-							<a href="#" class="nav-link btn btn-light px-2 link-dark" role="button"
+							<a href="{% url 'Home' %}" class="nav-link px-2 link-secondary">Home</a>
+						</li>
+						<li>
+							<a
+								href="{% url 'Crear Post' %}"
+								class="nav-link btn btn-light px-2 link-dark"
+								role="button"
 								>Crear</a
 							>
 						</li>
 					</ul>
 
-					<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+					<form
+						action="{% url 'Search' %}"
+						method="post"
+						class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
+						role="search">
 						<input
 							type="search"
 							class="form-control"
@@ -57,7 +66,7 @@
 					</form>
 
 					<a
-						href="{% url 'Home' %}"
+						href="{% url 'Chats' %}"
 						class="d-flex btn btn-light align-items-center mb-2 mb-lg-0 me-lg-3 p-1 rounded-circle"
 						role="button">
 						<img
@@ -69,7 +78,7 @@
 
 					<div class="dropdown text-end">
 						<a
-							href="#"
+							href="{% url 'Profile' %}"
 							class="d-block link-dark text-decoration-none dropdown-toggle"
 							data-bs-toggle="dropdown"
 							aria-expanded="false">
@@ -79,11 +88,21 @@
 						</a>
 
 						<ul class="dropdown-menu text-small">
-							<li><a class="dropdown-item" href="#">New post...</a></li>
-							<li><a class="dropdown-item" href="#">Settings</a></li>
-							<li><a class="dropdown-item" href="#">Profile</a></li>
+							<li>
+								<a class="dropdown-item" href="{% url 'Crear Post' %}"
+									>New post...</a
+								>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{% url 'User Settings' %}"
+									>Settings</a
+								>
+							</li>
+							<li><a class="dropdown-item" href="{% url 'Profile' %}">Profile</a></li>
 							<li><hr class="dropdown-divider" /></li>
-							<li><a class="dropdown-item" href="#">Sign out</a></li>
+							<li>
+								<a class="dropdown-item" href="{% url 'Log Out' %}">Sign out</a>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -97,7 +116,9 @@
 		<footer
 			class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top fixed-bottom px-4">
 			<div class="col-md-4 d-flex align-items-center">
-				<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+				<a
+					href="{% url 'About Us' %}"
+					class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
 					<img
 						class="bi"
 						width="30"
