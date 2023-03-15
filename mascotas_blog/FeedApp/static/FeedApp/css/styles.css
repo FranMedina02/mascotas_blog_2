@@ -1,3 +1,9 @@
-.post_img{
+*, ::after,::before {
+    box-sizing: border-box;
+}
+
+a>img.post_img{
     border-radius: 16px;
+    width: 20%;
+    height: auto;
 }

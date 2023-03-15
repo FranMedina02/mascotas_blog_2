@@ -5,13 +5,15 @@
     <ul>
         
         {% if posts %}
-            {% for post in posts %}
-                <li>{{post.id_post}}</li>
-                <li>{{post.title}}</li>
-                <li>{{post.subtitle}}</li>
-                <li>{{post.description}}</li>
-                <li>{{post.id_user}}</li>
-                <li>
+        {% for post in posts %}
+        {% comment %}
+            <li>{{post.id_post}}</li>
+            <li>{{post.title}}</li>
+            <li>{{post.subtitle}}</li>
+            <li>{{post.description}}</li>
+            <li>{{post.id_user}}</li>
+        {% endcomment %}
+            <li>
                     <a href="{% url 'Single Post' id_post=post.id_post %}">
                         <img class="post_img"  src="../media/{{post.id_img}}" alt="No se puede mostrar">
                     </a>
