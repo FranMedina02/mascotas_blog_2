@@ -6,17 +6,10 @@ def home(request):
 
     context = {}
 
-    template = 'FeedApp/home.html'
+    template = 'mascotas_blog/home.html'
 
     return render(request, template, context)
 
-def login(request):
-
-    context = {'texto': 'Este es el login'}
-
-    template = 'FeedApp/login.html'
-
-    return render(request, template, context)
 
 def posts(request, id_post=None):
 
