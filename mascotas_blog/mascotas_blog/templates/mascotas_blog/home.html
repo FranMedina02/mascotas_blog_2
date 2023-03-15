@@ -1,50 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'FeedApp/css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-</head>
-<body>
-    
-    <header>
-        <nav>
-            <div class="container">
-                <a href="{% url 'Home' %}">Logo</a>
-                <a href="{% url 'Home' %}">Home</a>
-                <a href="">Crear</a>
-                <span>Barra de busqueda</span> <!--Temporal-->
-                <a href="">Notificaciones</a>
-                <a href="{% url 'Log in' %}">Avatar</a>
+	<head>
+		{% load static %}
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="{% static 'FeedApp/css/styles.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+	</head>
+	<body>
+		<header>
+			<nav>
+				<div class="container">
+					<a href="{% url 'Home' %}">Logo</a>
+					<a href="{% url 'Home' %}">Home</a>
+					<a href="">Crear</a>
+					<span>Barra de busqueda</span>
+					<!--Temporal-->
+					<a href="">Notificaciones</a>
+					<a href="{% url 'Log in' %}">Avatar</a>
+				</div>
+			</nav>
+		</header>
+		<section>{% block feed %} {% endblock feed %}</section>
 
-            </div>
-        </nav>
-    </header>
-    <section>
-        {% block feed %}
-            
-        {% endblock feed %}
-    </section>
+		<footer
+			class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top fixed-bottom px-4">
+			<div class="col-md-4 d-flex align-items-center">
+				<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+					<img
+						class="bi"
+						width="30"
+						height="24"
+						src="{% static 'assets/icons/logo.svg' %}" />
+				</a>
+				<span class="mb-3 mb-md-0 text-muted">© 2023 Francisco Medina</span>
+			</div>
 
-    <footer>
-        <nav>
-            <div>
-                <h2>
-
-                    <span>instagram -</span>
-                    <span>facebook -</span>
-                    <span>twitter -</span>
-                    <span>logo -</span>
-                    <span>about us</span>
-                </h2>
-            </div>
-        </nav>
-    </footer>
-
-</body>
+			<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+				<li class="ms-3">
+					<a
+						class="text-muted"
+						target="_blank"
+						href="https://www.instagram.com/fran_medin.c/">
+						<img
+							class="bi"
+							width="24"
+							height="24"
+							src="{% static 'assets/icons/ig.svg' %}" />
+					</a>
+				</li>
+				<li class="ms-3">
+					<a
+						class="text-muted"
+						target="_blank"
+						href="https://www.twitter.com/Fran22964554">
+						<img
+							class="bi"
+							width="24"
+							height="24"
+							src="{% static 'assets/icons/tw.svg' %}" />
+					</a>
+				</li>
+				<li class="ms-3">
+					<a
+						class="text-muted"
+						target="_blank"
+						href="https://www.facebook.com/profile.php?id=100011176805886">
+						<img
+							class="bi"
+							width="24"
+							height="24"
+							src="{% static 'assets/icons/fb.svg' %}" />
+					</a>
+				</li>
+			</ul>
+		</footer>
+	</body>
 </html>
-

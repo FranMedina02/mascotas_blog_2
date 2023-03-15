@@ -1,31 +1,22 @@
-{% extends "mascotas_blog/home.html" %}
-{% load static %}
-{% block feed %}
+{% extends "mascotas_blog/home.html" %} {% load static %} {% block feed %}
 
-    <ul>
-        
-        {% if posts %}
-        {% for post in posts %}
-        {% comment %}
-            <li>{{post.id_post}}</li>
-            <li>{{post.title}}</li>
-            <li>{{post.subtitle}}</li>
-            <li>{{post.description}}</li>
-            <li>{{post.id_user}}</li>
-        {% endcomment %}
-            <li>
-                <a href="{% url 'Single Post' id_post=post.id_post %}">
-                    <img class="post_img"  src="../media/{{post.id_img}}" alt="No se puede mostrar">
-                </a>
-            </li>
-                
+<ul>
+	{% if posts %} {% for post in posts %} {% comment %}
+	<li>{{post.id_post}}</li>
+	<li>{{post.title}}</li>
+	<li>{{post.subtitle}}</li>
+	<li>{{post.description}}</li>
+	<li>{{post.id_user}}</li>
+	{% endcomment %}
+	<li>
+		<a href="{% url 'Single Post' id_post=post.id_post %}">
+			<img class="post_img" src="../media/{{post.id_img}}" alt="No se puede mostrar" />
+		</a>
+	</li>
 
-            {% endfor %}
-        {% else %}
-            <p>No hay posts disponibles</p>
-        {% endif %}
-        
-    </ul>
-
+	{% endfor %} {% else %}
+	<p>No hay posts disponibles</p>
+	{% endif %}
+</ul>
 
 {% endblock feed %}
