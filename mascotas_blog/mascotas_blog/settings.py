@@ -58,7 +58,8 @@ ROOT_URLCONF = 'mascotas_blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ join(BASE_DIR, 'mascotas_blog', 'templates'),], #'./templates/'
+        'DIRS': [ join(BASE_DIR, 'templates'),
+                  join(BASE_DIR, 'mascotas_blog', 'templates')], #'./templates/'
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
