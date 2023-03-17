@@ -1,6 +1,8 @@
 # Create your views here.
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from FeedApp.models import Post
+from FeedApp.forms import PostFormulario
+from UserApp.models import User
 
 def home(request):
 
@@ -11,9 +13,9 @@ def home(request):
     return render(request, template, context)
 
 
-def posts(request, id_post=None):
-
-    posts = Post.objects.all()
+def posts(request):
+    
+    posts = Post.objects.all().order_by('-id_post')
     template = 'FeedApp/post.html'
     context = {'posts':posts}
 
@@ -27,3 +29,30 @@ def single_post(request, id_post):
     context = {'post':post}
 
     return render(request, template, context)
+
+def postFormulario(request):
+
+    if request.method == 'POST':
+        
+        form = PostFormulario(request.POST, request.FILES)
+        print(form)
+        if form.is_valid():
+
+            info = form.cleaned_data
+            print(info)
+            post = Post(title = info['title'],
+                        subtitle = info['subtitle'],
+                        description = info['desc'],
+                        id_user = User.objects.get(id_user = 1),
+                        id_img = info['id_img'])
+            post.save()
+
+            return redirect('Home')
+    
+    else:
+        form = PostFormulario()
+
+    return render(request, 'FeedApp/postFormulario.html', {'form':form})
+
+def search(request, data):
+    pass

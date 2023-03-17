@@ -1,5 +1,7 @@
-*, ::after,::before {
-    box-sizing: border-box;
+
+section {
+    height: calc(100vh - 133px);
+    translate: 0px 73px;
 }
 
 a>img.post_img{

@@ -10,4 +10,4 @@ class User(models.Model):
     description = models.CharField(max_length=255)
 
     def __str__(self):
-        return f'id: {self.id_user} - username: {self.username}'
+        return f'{self.id_user}_{self.username}'
