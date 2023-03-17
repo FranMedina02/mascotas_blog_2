@@ -109,9 +109,11 @@
 			</div>
 		</header>
 
-		{% comment "" %}
-		<section>{% block feed %} {% endblock feed %}</section>
-		{% endcomment %}
+		<section class="m-0 p-2 overflow-y-scroll">
+			{% block feed %} {% endblock feed %}
+
+			<a href="{% url 'Home' %}"> volver </a>
+		</section>
 
 		<footer
 			class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top fixed-bottom px-4">

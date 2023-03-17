@@ -1,26 +1,17 @@
-{% extends "mascotas_blog/home.html" %}
-{% load static %}
-{% block feed %}
+{% extends "mascotas_blog/home.html" %} {% load static %} {% block feed %} {% if post %}
+<div class="card" style="width: 18rem">
+	<img
+		src="../media/{{post.id_img}}"
+		width="400"
+		class="card-img-top post_image"
+		alt="No se puede mostrar" />
+	<div class="card-body">
+		<h5 class="card-title">{{post.title}}</h5>
+		<p class="card-text">{{post.description}}</p>
+		<a href="#{# {% url 'User' {{post.id_user}} %} #}" class="card-link">Owner</a>
+	</div>
+</div>
 
-    <ul>
-        
-        {% if post %}
-
-                <li>{{post.id_post}}</li>
-                <li>{{post.title}}</li>
-                <li>{{post.subtitle}}</li>
-                <li>{{post.description}}</li>
-                <li>{{post.id_user}}</li>
-                <li><img class="post_img"  src="../media/{{post.id_img}}" alt="No se puede mostrar"></li>
-                
-        {% else %}
-            <p>No hay posts disponibles</p>
-        {% endif %}
-
-    </ul>
-
-    <a href="{% url 'Home' %}">
-        volver
-    </a>
-    
-{% endblock feed %}
+{% else %}
+<p>No hay posts disponibles</p>
+{% endif %} {% endblock feed %}
