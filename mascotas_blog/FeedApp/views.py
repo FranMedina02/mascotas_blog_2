@@ -2,7 +2,7 @@
 from django.shortcuts import render, redirect
 from FeedApp.models import Post
 from FeedApp.forms import PostFormulario
-from UserApp.models import User
+from UserApp.models import CustomUser
 
 def home(request):
 
@@ -43,7 +43,7 @@ def postFormulario(request):
             post = Post(title = info['title'],
                         subtitle = info['subtitle'],
                         description = info['desc'],
-                        id_user = User.objects.get(id_user = 1),
+                        id_user = CustomUser.objects.get(id_user = 1),
                         id_img = info['id_img'])
             post.save()
 

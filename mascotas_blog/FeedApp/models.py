@@ -10,8 +10,8 @@ import os
 def path_and_rename(instance, filename : str):
     upload_to = 'post_imgs'
     ext = filename.split('.')[-1]
-    if instance.id_user:
-        name = (str(instance.id_user) + '_' + str(int(time())))
+    if instance.pk:
+        name = (str(instance.pk) + '_' + str(int(time())))
         filename = f'{name}.{ext}'
     else:
         filename = f'{uuid4().hex}.{ext}'
