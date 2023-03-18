@@ -1,5 +1,5 @@
 from django.db import models
-from UserApp.models import User
+from UserApp.models import CustomUser
 from time import time
 from uuid import uuid4
 import os
@@ -22,7 +22,7 @@ class Post(models.Model):
     title = models.CharField(max_length=25)
     subtitle = models.CharField(max_length=35)
     description = models.TextField(max_length=255)
-    id_user = models.ForeignKey(User, on_delete= models.CASCADE)
+    id_user = models.ForeignKey(CustomUser, on_delete= models.CASCADE)
     id_img = models.ImageField(upload_to=path_and_rename,
                                 max_length=255, null=True, blank=True)
 
