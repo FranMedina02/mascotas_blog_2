@@ -31,20 +31,20 @@ def login(request):
 
         
 
-    
 def logout(request):
     dj_logout(request)
     return redirect('Home')
 
+@login_required(login_url='/login/')
 def user_settings(request):
     pass
 
 @login_required(login_url='/login/')
-def profile(request):
+def profile(request, user = None):
+    if user is None:
+        user = request.user
 
-    curr_user = request.user
-
-    user_posts = Post.objects.filter(id_user=curr_user)
+    user_posts = Post.objects.filter(id_user=user)
     n_posts = len(user_posts)
 
     print(n_posts)

@@ -9,7 +9,7 @@
 	<div class="card-body">
 		<h5 class="card-title">{{post.title}}</h5>
 		<p class="card-text">{{post.description}}</p>
-		<a href="#{# {% url 'User' {{post.id_user}} %} #}" class="card-link">Owner</a>
+		<a href="{% url 'Owner' user=post.id_user.id %}" class="card-link">Owner</a>
 	</div>
 </div>
 
