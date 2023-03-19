@@ -2,11 +2,12 @@ from django.shortcuts import render, redirect
 from UserApp.forms import UserFormulario
 from django.contrib.auth import authenticate, login as dj_login, logout as dj_logout
 from FeedApp.models import Post
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+
 def login(request):
     if request.user.is_authenticated:
-        return redirect('Home')
+        return redirect(next)
 
     if request.method == 'POST':
         
@@ -19,10 +20,10 @@ def login(request):
             if user is not None:
                 print('authenticated')
                 dj_login(request,user)
-                return redirect('Home')
+                return redirect(request.GET.get('next', '/'))
             else:
                 print('not authenticated')
-                form.add_error(field=None,error='Invalid authentication')
+                form.add_error(field=None,error='Error en la autenticcion')
                 return render(request, 'UserApp/login.html', {'form':form})
     else:
         form = UserFormulario()
@@ -38,17 +39,20 @@ def logout(request):
 def user_settings(request):
     pass
 
+@login_required(login_url='/login/')
 def profile(request):
-    if request.user.is_authenticated:
-        curr_user = request.user
-        context = {}
 
-        user_posts = Post.objects.filter(id_user=curr_user)
-        n_posts = len(user_posts)
+    curr_user = request.user
 
-        return render(request, 'UserApp/login.html', {'posts':user_posts,'n_post':n_posts})
+    user_posts = Post.objects.filter(id_user=curr_user)
+    n_posts = len(user_posts)
+
+    print(n_posts)
+
+    return render(request, 'UserApp/profile.html',
+                  context = {'posts':user_posts,'n_posts':n_posts})
     
-    return redirect('Log in')
+
     
 
 
