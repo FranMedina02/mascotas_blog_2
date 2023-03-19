@@ -48,5 +48,9 @@ def postFormulario(request):
 
     return render(request, 'FeedApp/postFormulario.html', {'form':form})
 
-def search(request, data):
-    pass
+def search(request):
+    
+    username = request.GET['username']
+    users = CustomUser.objects.filter(username__icontains=username)
+
+    return render(request, 'FeedApp/search_results.html', {'results':users})
