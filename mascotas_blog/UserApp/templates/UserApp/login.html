@@ -1,6 +1,14 @@
-{% extends "mascotas_blog/home.html" %}
-{% block feed %}
+{% extends "mascotas_blog/home.html" %} {% block feed %}
 
-    <h1 style="color:red">{{texto}}</h1>
+<h2>Iniciar Sesión</h2>
+
+<form class="pt-5" action="" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<table>
+		{{ form.as_table }}
+	</table>
+
+	<input type="submit" value="Log In" />
+</form>
 
 {% endblock feed %}

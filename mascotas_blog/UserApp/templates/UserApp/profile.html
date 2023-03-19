@@ -1,5 +1,7 @@
-{% extends "mascotas_blog/home.html" %} {% load static %} {% block feed %}
+{% extends "mascotas_blog/home.html" %} {% block feed %}
 
+<h1>{{request.user.get_username}}</h1>
+<p>{{n_posts}} publicaciones</p>
 <div class="d-flex justify-content-start align-items-center flex-wrap">
 	{% if posts %} {% for post in posts %}
 

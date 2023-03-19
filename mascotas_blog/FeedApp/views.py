@@ -3,14 +3,7 @@ from django.shortcuts import render, redirect
 from FeedApp.models import Post
 from FeedApp.forms import PostFormulario
 from UserApp.models import CustomUser
-
-def home(request):
-
-    context = {}
-
-    template = 'mascotas_blog/home.html'
-
-    return render(request, template, context)
+from django.contrib.auth.decorators import login_required
 
 
 def posts(request):
@@ -30,6 +23,7 @@ def single_post(request, id_post):
 
     return render(request, template, context)
 
+@login_required(login_url='/login/')
 def postFormulario(request):
 
     if request.method == 'POST':
@@ -43,7 +37,7 @@ def postFormulario(request):
             post = Post(title = info['title'],
                         subtitle = info['subtitle'],
                         description = info['desc'],
-                        id_user = CustomUser.objects.get(id_user = 1),
+                        id_user = request.user,
                         id_img = info['id_img'])
             post.save()
 
