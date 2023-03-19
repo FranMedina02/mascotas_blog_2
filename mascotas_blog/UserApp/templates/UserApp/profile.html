@@ -1,0 +1,9 @@
+{% extends "mascotas_blog/home.html" %} {% block feed %}
+
+<div class="all_posts">
+	{% for post in posts %}
+	<img class="post_img" src="../media/{{post.id_img}}" alt="No se puede mostrar" />
+	{% endfor %}
+</div>
+
+{% endblock feed %}

@@ -43,7 +43,7 @@ def postFormulario(request):
             post = Post(title = info['title'],
                         subtitle = info['subtitle'],
                         description = info['desc'],
-                        id_user = CustomUser.objects.get(id_user = 1),
+                        id_user = CustomUser.objects.get(id = 1),
                         id_img = info['id_img'])
             post.save()
 
