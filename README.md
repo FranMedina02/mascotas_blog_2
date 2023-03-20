@@ -59,6 +59,8 @@ Password 'ProfesorCoder123' por si se quieren ver opciones extra.
 
 A su vez en la pagina para el login se puede usar un usuario con mismos atributos para su navegacion.
 
+Para descargar el repositorio se recomienda usar el comando ```git clone --single-branch --branch Tercera-entrega-TP_Final https://github.com/FranMedina02/mascotas_blog_2```
+
 ## Uso de la Pagina
 
 La pagina se utiliza exclusivamente desde el navbar y desde la seccion. <br>
