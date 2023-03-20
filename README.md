@@ -2,7 +2,7 @@
  > Hecho por Francisco Medina.
   
 ## Descripcion del Projecto
-Esta red social te permite compartir fotos y publicaciones exclusivamente de tus mascotas. Intenta recrear lo que sería el ambiente de Pinteres.
+Esta red social te permite compartir fotos y publicaciones exclusivamente de tus mascotas.<br><br> Intenta recrear lo que sería el ambiente de Pinteres.
 
 ## Indice
 1. [Estructura](#Estructura)
@@ -49,8 +49,19 @@ Esta red social te permite compartir fotos y publicaciones exclusivamente de tus
 
 ## Instalacion
 
-Esta Branch del repositorio tiene todos los archivos necesarios para usar la pagina en cuanto a bootstrap y templates.
+Esta Branch del repositorio tiene todos los archivos necesarios para usar la pagina en cuanto a bootstrap y templates.<br>
 Lo unico que hay que hacer es instalar requirements.txt
+
+Se adjunta la base de datos que ya contiene un superuser 'Profesor'<br>
+Password 'ProfesorCoder123' por si se quieren ver opciones extra.
+
+A su vez en la pagina para el login se puede usar un usuario con mismos atributos para su navegacion.
+
+## Uso de la Pagina
+
+La pagina se utiliza exclusivamente desde el navbar y desde la seccion. <br>
+Es considerablemente intuitivo de usar, la pagina redirecciona sola todos los links.
+
 
 
 
