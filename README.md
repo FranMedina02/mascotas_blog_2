@@ -2,7 +2,7 @@
  > Hecho por Francisco Medina.
   
 ## Descripcion del Projecto
-Esta red social te permite compartir fotos y publicaciones exclusivamente de tus mascotas.<br><br> Intenta recrear lo que sería el ambiente de Pinteres.
+Esta red social te permite compartir fotos y publicaciones exclusivamente de tus mascotas.<br><br> Intenta recrear lo que sería el ambiente de Pinterest.
 
 ## Indice
 1. [Estructura](#estructura)
