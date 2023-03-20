@@ -19,11 +19,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from mascotas_blog.views import aboutUs
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('AboutUs/', aboutUs, name='About Us'),
     path('', include('FeedApp.urls')),
     path('', include('UserApp.urls')),
+    path('', include('ChatApp.urls')),
 ]
 
 urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

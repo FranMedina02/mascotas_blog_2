@@ -123,6 +123,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     join(BASE_DIR, 'static'),
+    join(BASE_DIR, 'UserApp' ,'static'),
+    join(BASE_DIR, 'FeedApp' ,'static'),
+    
 ]
 
 # Default primary key field type
@@ -130,7 +133,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+AUTH_USER_MODEL = 'UserApp.CustomUser'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = join(BASE_DIR, 'media')

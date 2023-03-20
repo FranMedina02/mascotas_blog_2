@@ -6,24 +6,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<link rel="icon" href="{% static 'assets/icons/logo.svg' %}" type="image/x-icon" />
 		<link rel="stylesheet" href="{% static 'FeedApp/css/styles.css' %}" />
+		<link rel="stylesheet" href="{% static 'UserApp/css/styles.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
 	</head>
 	<body>
-		{% comment "" %}
-		<header>
-			<nav>
-				<div class="container">
-					<a href="{% url 'Home' %}">Home</a>
-					<a href="">Crear</a>
-					<span>Barra de busqueda</span>
-					<!--Temporal-->
-					<a href="">Notificaciones</a>
-					<a href="{% url 'Log in' %}">Avatar</a>
-				</div>
-			</nav>
-		</header>
-		{% endcomment %}
 		<header class="p-3 mb-3 border-bottom fixed-top">
 			<div class="container">
 				<div
@@ -54,11 +42,12 @@
 					</ul>
 
 					<form
-						action="{% url 'Search' %}"
-						method="post"
+						action="{% url 'Search'  %}"
+						method="GET"
 						class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
 						role="search">
 						<input
+							name="username"
 							type="search"
 							class="form-control"
 							placeholder="Search..."
@@ -66,7 +55,7 @@
 					</form>
 
 					<a
-						href="{% url 'Chats' %}"
+						href="{% url 'All Chats' %}"
 						class="d-flex btn btn-light align-items-center mb-2 mb-lg-0 me-lg-3 p-1 rounded-circle"
 						role="button">
 						<img
@@ -82,15 +71,15 @@
 							class="d-block link-dark text-decoration-none dropdown-toggle"
 							data-bs-toggle="dropdown"
 							aria-expanded="false">
-							<img {% comment "media avatar" %}{% endcomment %}
-							src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
-							class="rounded-circle" />
+							<img class="bi bi-person"{% comment "media avatar" %}{% endcomment %}
+							src="{% static 'assets/icons/person.svg' %}" alt="" width="32"
+							height="32" class="rounded-circle" />
 						</a>
 
 						<ul class="dropdown-menu text-small">
 							<li>
-								<a class="dropdown-item" href="{% url 'Crear Post' %}"
-									>New post...</a
+								<a class="dropdown-item" href="{% url 'Crear Post' %}">
+									New post...</a
 								>
 							</li>
 							<li>
@@ -109,9 +98,10 @@
 			</div>
 		</header>
 
-		{% comment "" %}
-		<section>{% block feed %} {% endblock feed %}</section>
-		{% endcomment %}
+		<section class="m-0 p-2 overflow-y-scroll">
+			{% block feed %} {% endblock feed %}
+			<a href="{% url 'Home' %}"> volver al inicio </a>
+		</section>
 
 		<footer
 			class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top fixed-bottom px-4">
