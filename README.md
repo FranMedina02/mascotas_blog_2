@@ -60,7 +60,8 @@ A su vez en la pagina para el login se puede usar un usuario con mismos atributo
 ## Uso de la Pagina
 
 La pagina se utiliza exclusivamente desde el navbar y desde la seccion. <br>
-Es considerablemente intuitivo de usar, la pagina redirecciona sola todos los links.
+Es considerablemente intuitivo de usar, la pagina redirecciona sola todos los links. <br>
+Se recomienda realizar alguna publicacion con el usuario para visualizar correctamente las paginas y urls. 
 
 
 
