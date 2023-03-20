@@ -1,0 +1,73 @@
+{% extends "mascotas_blog/home.html" %} {% load static %} {% block feed %}
+
+<div class="d-flex flex-row p-4">
+	<div class="card" style="width: 30vw">
+		<img src="{% static 'assets/img/yo.jpg' %}" class="card-img-top" alt="..." />
+		<div class="card-body">
+			<h5 class="card-title">Quien soy...</h5>
+			<p class="card-text">
+				Soy Francisco, tengo 20 años, Actualmente me encuentro estudiando. Programo en mis tiempos libres.
+			</p>
+			<a href="mailto:medinafran2002@hotmail.com" class="btn btn-primary">Contactame</a>
+		</div>
+	</div>
+
+	<div class="container-fluid text-center">
+		<div class="row justify-content-center ">
+			<div class="col-6">
+				<div class="card m-0" style="width: 30vw">
+					<div class="card-body">
+						<h5 class="card-title">Carrera</h5>
+						<h6 class="card-subtitle mb-2 text-muted">Carrera Academica Formal</h6>
+						<p class="card-text">
+							<div class="list-group">
+                                <a class="list-group-item" href="https://www.ilasalle.com.ar/" target = "_blank">Tecnico Quimico - LaSalle Florida</a>
+                                <a class="list-group-item" href="https://www.fie.undef.edu.ar/" target = "_blank">Ingenieria Quimica - FIE</a>
+                            </div>
+						</p>
+					</div>
+				</div>
+            </div>
+				<div class="col-6">
+					<div class="card m-0" style="width: 30vw">
+						<div class="card-body">
+							<h5 class="card-title">Cursos</h5>
+							<h6 class="card-subtitle mb-2 text-muted">Cursos Complementarios</h6>
+							<p class="card-text">
+                                <div class="list-group">
+                                    <a class="list-group-item" href="https://sceu.frba.utn.edu.ar/e-learning/detalle/diplomatura/1413/diplomatura-en-python" target = "_blank">Diplomatura en Pytnon - UTN</a>
+                                    <a class="list-group-item" href="https://www.coderhouse.com/online/sql" target = "_blank">Curso de SQL - Coderhouse</a>
+                                    <a class="list-group-item" href="https://www.coderhouse.com/online/python" target = "_blank">Curso de Python - Coderhouse</a>
+                                    <a class="list-group-item" href="https://www.fie.undef.edu.ar/" target = "_blank">Curso de LaTex - FIE</a>
+                                </div>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center pt-3">
+				<div class="col-12" >
+					<div class="card m-0" style="width: auto">
+						<div class="card-body">
+							<h5 class="card-title">Habilidades</h5>
+							<h6 class="card-subtitle mb-2 text-muted">Mis habilidades extra oficiales</h6>
+                            <p class="card-text">
+                                <div class="d-flex justify-content-evenly">
+                                    <div class="list-group ">
+                                        <p class="list-group-item">Conocimientos de Electronica</p>
+                                        <p class="list-group-item">Muy buena logica</p>
+                                    </div>
+                                    <div class="list-group">
+                                        <p class="list-group-item">Nivel avanzado de ingles</p>
+                                        <p class="list-group-item">Soy muy curioso</p>
+                                    </div>
+                                </div>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock feed %}
