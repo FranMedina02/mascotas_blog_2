@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect
 
 # Create your views here.
 def conversation(request):
-    pass
+    return redirect('Home')
 def all_chats(request):
-    pass
+    return redirect('Home')
