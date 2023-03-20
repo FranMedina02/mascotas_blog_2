@@ -5,15 +5,17 @@
 Esta red social te permite compartir fotos y publicaciones exclusivamente de tus mascotas.<br><br> Intenta recrear lo que sería el ambiente de Pinteres.
 
 ## Indice
-1. [Estructura](#Estructura)
-	1. [Apps](#Apps)
-	2. [Modelo](#Modelo)
-2. [URLS](#URLS)
+1. [Estructura](#estructura)
+	1. [Apps](#apps)
+	2. [Modelos](#modelos)
+2. [URLS](#urls)
+3. [Instalacion](#instalacion)
+4. [Uso de la Pagina](#uso-de-la-pagina)
 
 
 ## Estructura 
 
-- Apps <a name="Apps"></a>
+- Apps <a name="apps"></a>
 
 	| Nombre | Description | Ejemplos |
 	| ----------- | ----------- | ----------- |
@@ -21,7 +23,7 @@ Esta red social te permite compartir fotos y publicaciones exclusivamente de tus
 	| FeedApp | Todo lo referente al Feed y a las publicaciones | Ver y Crear publicaciones |
 	| ChatApp | Todo lo referente al chat entre dos usuarios | En desarrollo... |
 
-- Modelos <a name="Modelos"></a>
+- Modelos <a name="modelos"></a>
 
 	| Nombre | Description | App |
 	| ----------- | ----------- | ----------- |
