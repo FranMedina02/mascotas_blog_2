@@ -37,7 +37,7 @@ def logout(request):
 
 @login_required(login_url='/login/')
 def user_settings(request):
-    pass
+    return redirect('Home')
 
 @login_required(login_url='/login/')
 def profile(request, user = None):
