@@ -1,0 +1,28 @@
+{% extends "mascotas_blog/home.html" %} {% block feed %}
+
+<h1>Editar Usuario</h1>
+
+<div class="container">
+	<div class="d-flex flex-row justify-content-evenly align-items-start flex-nowrap">
+		<div class="info">
+			<ul class="list-group">
+				<li class="list-group-item">Username: {{request.user.get_username}}</li>
+				<li class="list-group-item">Mail: {{request.user.email}}</li>
+				<li class="list-group-item">Nombre:{{request.user.get_short_name}}</li>
+				<li class="list-group-item">Apellido: {{request.user.last_name}}</li>
+				<li class="list-group-item">Biografia: {{request.user.description}}</li>
+			</ul>
+		</div>
+		<div class="edit">
+			<form action="" method="POST">
+				{% csrf_token %}
+				<table>
+					{{ edit_form.as_table }}
+				</table>
+				<input type="Submit" value="Save" />
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock feed %}

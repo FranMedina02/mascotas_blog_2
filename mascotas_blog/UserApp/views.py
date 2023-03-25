@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from UserApp.forms import UserFormulario
+from UserApp.forms import UserLoginForm, UserEditForm
 from django.contrib.auth import authenticate, login as dj_login, logout as dj_logout
 from FeedApp.models import Post
 from django.contrib.auth.decorators import login_required
-
+from django.urls import reverse
 
 def login(request):
     if request.user.is_authenticated:
@@ -11,7 +11,7 @@ def login(request):
 
     if request.method == 'POST':
         
-        form = UserFormulario(request.POST)
+        form = UserLoginForm(request.POST)
         if form.is_valid():
             info = form.cleaned_data
             print('valid')
@@ -26,7 +26,7 @@ def login(request):
                 form.add_error(field=None,error='Error en la autenticcion')
                 return render(request, 'UserApp/login.html', {'form':form})
     else:
-        form = UserFormulario()
+        form = UserLoginForm()
     return render(request, 'UserApp/login.html', {'form':form})
 
         
@@ -37,7 +37,33 @@ def logout(request):
 
 @login_required(login_url='/login/')
 def user_settings(request):
-    pass
+
+    user = request.user
+
+    if request.method == 'POST':
+        
+        form = UserEditForm(request.POST)
+
+        if form.is_valid():
+
+            info = form.cleaned_data
+            print('valid')
+
+            user.username = info['username'] or user.username
+            user.email = info['email'] or user.email
+            user.first_name = info['first_name'] or user.first_name
+            user.last_name = info['last_name'] or user.last_name
+            user.description = info['biografia'] or user.description
+            user.save()
+
+            return redirect(reverse("Profile"))
+
+    else:
+        form = UserEditForm(request.POST)
+    
+    return render(request, 'UserApp/settings.html', {'edit_form':form})
+
+
 
 @login_required(login_url='/login/')
 def profile(request, user = None):
@@ -47,7 +73,7 @@ def profile(request, user = None):
     user_posts = Post.objects.filter(id_user=user)
     n_posts = len(user_posts)
 
-    print(n_posts)
+
 
     return render(request, 'UserApp/profile.html',
                   context = {'posts':user_posts,'n_posts':n_posts})
