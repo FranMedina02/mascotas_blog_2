@@ -1,4 +1,6 @@
-{% extends "mascotas_blog/home.html" %} {% block feed %}
+{% extends "mascotas_blog/home.html" %} {% load static %}{% block extra_css %}
+<link rel="stylesheet" href="{% static 'UserApp/css/styles.css' %}" />
+{% endblock extra_css %} {% block feed %}
 
 <h2>Iniciar Sesión</h2>
 
@@ -8,7 +10,10 @@
 		{{ form.as_table }}
 	</table>
 
-	<input type="submit" value="Log In" />
+	<div class="d-flex flex-row justify-content-around align-items-center flex-nowrap">
+		<input class="btn btn-primary" type="submit" value="Log In" />
+		<a class="btn btn-primary" href="{% url 'Register' %}" role="button">Registrarse</a>
+	</div>
 </form>
 
 {% endblock feed %}

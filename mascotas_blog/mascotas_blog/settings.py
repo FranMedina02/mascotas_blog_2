@@ -123,9 +123,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     join(BASE_DIR, 'static'),
-    join(BASE_DIR, 'UserApp' ,'static'),
-    join(BASE_DIR, 'FeedApp' ,'static'),
-    
 ]
 
 # Default primary key field type

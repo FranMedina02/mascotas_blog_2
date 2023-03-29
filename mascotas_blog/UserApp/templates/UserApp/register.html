@@ -1,0 +1,17 @@
+{% extends "mascotas_blog/home.html" %}{% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'UserApp/css/styles.css' %}" />
+{% endblock extra_css %} {% block feed %}
+
+<h2>Registrarse</h2>
+
+<form class="pt-5" action="" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<table>
+		{{ form.as_table }}
+	</table>
+
+	<input class="btn btn-primary" type="submit" value="Registrarse" />
+</form>
+
+<a class="btn btn-primary" href="{% url 'Log in' %}" role="button">Iniciar sesion</a>
+{% endblock feed %}
