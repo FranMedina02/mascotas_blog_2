@@ -6,7 +6,6 @@ from UserApp.models import CustomUser
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
-
 def login(request):
     if request.user.is_authenticated:
         return redirect(next)

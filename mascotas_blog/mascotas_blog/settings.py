@@ -59,7 +59,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [ join(BASE_DIR, 'templates'),
-                  join(BASE_DIR, 'mascotas_blog', 'templates')], #'./templates/'
+                  join(BASE_DIR, 'mascotas_blog', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,9 +120,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    join(BASE_DIR, 'static'),
+    BASE_DIR / 'static',
+    #BASE_DIR / 'UserApp\static',
+    #BASE_DIR / 'FeedApp\static',
+    #join(BASE_DIR, 'ChatApp\static\ '),
 ]
 
 # Default primary key field type
