@@ -6,11 +6,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
 		<link rel="icon" href="{% static 'assets/icons/logo.svg' %}" type="image/x-icon" />
 		<link rel="stylesheet" href="{% static 'FeedApp/css/styles.css' %}" />
-		<link rel="stylesheet" href="{% static 'UserApp/css/styles.css' %}" />
 		{% block extra_css %}{% endblock extra_css %}
-		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
 	</head>
 	<body>
 		<header class="p-3 mb-3 border-bottom fixed-top">
@@ -99,7 +98,7 @@
 			</div>
 		</header>
 
-		<section class="m-0 p-2 overflow-y-scroll">
+		<section class="m-0 p-2 overflow-y-scroll position-relative">
 			{% block feed %} {% endblock feed %}
 			<a href="{% url 'Home' %}"> volver al inicio </a>
 		</section>

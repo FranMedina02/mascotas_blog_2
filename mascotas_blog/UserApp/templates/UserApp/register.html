@@ -1,17 +1,22 @@
-{% extends "mascotas_blog/home.html" %}{% load static %} {% comment ""%} {% block extra_css %}
+{% extends "mascotas_blog/home.html" %}{% load static %} {% block extra_css %}
 <link rel="stylesheet" href="{% static 'UserApp/css/styles.css' %}" />
-{% endblock extra_css %}{% endcomment %} {% block feed %}
+{% endblock extra_css %} {% block feed %}
 
-<h2>Registrarse</h2>
+<div class="">
+	<form class="position-absolute top-50 start-50 translate-middle" action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
 
-<form class="pt-5" action="" method="POST" enctype="multipart/form-data">
-	{% csrf_token %}
-	<table>
-		{{ form.as_table }}
-	</table>
+		<h1 class='h3 mb-3 fw-normal'>Registrarse</h2>
 
-	<input class="btn btn-primary" type="submit" value="Registrarse" />
-</form>
+		<table>
+			{{ form.as_table }}
+		</table>
 
-<a class="btn btn-primary" href="{% url 'Log in' %}" role="button">Iniciar sesion</a>
+		<div class="d-flex flex-row justify-content-around align-items-center flex-nowrap">
+			<input class="btn btn-primary" type="submit" value="Registrarse" />
+			<a class="btn btn-primary" href="{% url 'Log in' %}" role="button">Iniciar Sesion</a>
+		</div>
+	</form>
+</div>
+
 {% endblock feed %}
