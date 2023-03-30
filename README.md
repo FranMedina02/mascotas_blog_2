@@ -43,7 +43,7 @@ Esta red social te permite compartir fotos y publicaciones exclusivamente de tus
 - [Log Out](http://127.0.0.1:8000/logout) Log Out para el usuario
 - [Profile](http://127.0.0.1:8000/profile/) Pagina de la cuenta del usuario
 - [Owner](http://127.0.0.1:8000/profile/<user>) Pagina para ver el dueño de un post
-- ~~[User Settings](http://127.0.0.1:8000/settings) Editar usuario~~
+- [User Settings](http://127.0.0.1:8000/settings) Editar usuario
 - ~~[All Chats](http://127.0.0.1:8000/Chats) Todos los chats~~
 - ~~[Single Chat](http://127.0.0.1:8000/Chats/<conversation>) Leer Chat unico~~
 - [About Us](http://127.0.0.1:8000/AboutUs/) Pagina sobre el creador
@@ -64,6 +64,14 @@ A su vez en la pagina para el login se puede usar un usuario con mismos atributo
 La pagina se utiliza exclusivamente desde el navbar y desde la seccion. <br>
 Es considerablemente intuitivo de usar, la pagina redirecciona sola todos los links. <br>
 Se recomienda realizar alguna publicacion con el usuario para visualizar correctamente las paginas y urls. 
+
+## A Futuro (30/3/2023)
+
+- [ ] Delete user
+- [ ] Delete Post if owner
+- [ ] Edit Post if owner
+- [ ] Chats
+- [ ] Chat unico
 
 
 
