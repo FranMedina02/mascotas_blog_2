@@ -1,4 +1,6 @@
-{% extends "mascotas_blog/home.html" %} {% block feed %}
+{% extends "mascotas_blog/home.html" %}{% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'UserApp/css/styles.css' %}" />
+{% endblock extra_css %} {% block feed %}
 
 <h1>Editar Usuario</h1>
 

@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from UserApp.forms import UserLoginForm, UserEditForm
+from UserApp.forms import UserLoginForm, UserEditForm, UserRegisterForm
 from django.contrib.auth import authenticate, login as dj_login, logout as dj_logout
 from FeedApp.models import Post
+from UserApp.models import CustomUser
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
@@ -29,7 +30,24 @@ def login(request):
         form = UserLoginForm()
     return render(request, 'UserApp/login.html', {'form':form})
 
+def register(request):
+    if request.method == 'POST':
         
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            try:
+                CustomUser.objects.get(username=username)
+            except CustomUser.DoesNotExist:
+                #form.save(request)
+                return redirect('Home') 
+            else:
+                form.add_error(field='username',error='Usuario ya existente')
+                return render(request, 'UserApp/register.html', {'form':form})
+    else:
+        form = UserRegisterForm()
+
+    return render(request, 'UserApp/register.html', {'form':form})
 
 def logout(request):
     dj_logout(request)

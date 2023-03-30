@@ -3,6 +3,7 @@ import UserApp.views as views
 
 
 urlpatterns = [
+    path('register/', views.register, name='Register'),
     path('login/', views.login, name='Log in'),
     path('logout/', views.logout, name='Log Out'),
     path('profile/', views.profile, name='Profile'),
