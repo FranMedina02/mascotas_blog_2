@@ -1,15 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		{% load static %}
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
 		<link rel="icon" href="{% static 'assets/icons/logo.svg' %}" type="image/x-icon" />
 		<link rel="stylesheet" href="{% static 'FeedApp/css/styles.css' %}" />
-		<link rel="stylesheet" href="{% static 'UserApp/css/styles.css' %}" />
-		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+		{% block extra_css %}{% endblock extra_css %}
 	</head>
 	<body>
 		<header class="p-3 mb-3 border-bottom fixed-top">
@@ -98,9 +98,14 @@
 			</div>
 		</header>
 
-		<section class="m-0 p-2 overflow-y-scroll">
+		<section class="m-0 p-2 overflow-y-scroll position-relative">
 			{% block feed %} {% endblock feed %}
-			<a href="{% url 'Home' %}"> volver al inicio </a>
+			<a
+				class="position-absolute bottom-0 end-0 btn btn-primary mb-3 me-3"
+				role="button"
+				href="{% url 'Home' %}">
+				volver al inicio
+			</a>
 		</section>
 
 		<footer

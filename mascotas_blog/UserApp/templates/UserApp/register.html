@@ -1,4 +1,4 @@
-{% extends "mascotas_blog/home.html" %} {% load static %}{% block extra_css %}
+{% extends "mascotas_blog/home.html" %}{% load static %} {% block extra_css %}
 <link rel="stylesheet" href="{% static 'UserApp/css/styles.css' %}" />
 {% endblock extra_css %} {% block feed %}
 
@@ -6,15 +6,15 @@
 	<form class="position-absolute top-50 start-50 translate-middle" action="" method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
 
-		<h1 class='h3 mb-3 fw-normal'>Iniciar Sesión</h2>
+		<h1 class='h3 mb-3 fw-normal'>Registrarse</h2>
 
 		<table>
 			{{ form.as_table }}
 		</table>
 
 		<div class="d-flex flex-row justify-content-around align-items-center flex-nowrap pt-2">
-			<input class="btn btn-primary" type="submit" value="Log In" />
-			<a class="btn btn-primary" href="{% url 'Register' %}" role="button">Registrarse</a>
+			<input class="btn btn-primary" type="submit" value="Registrarse" />
+			<a class="btn btn-primary" href="{% url 'Log in' %}" role="button">Iniciar Sesion</a>
 		</div>
 	</form>
 </div>
