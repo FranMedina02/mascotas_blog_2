@@ -1,6 +1,33 @@
 {% extends "mascotas_blog/home.html" %} {% load static %}{% block extra_css %}
 <link rel="stylesheet" href="{% static 'UserApp/css/styles.css' %}" />
-{% endblock extra_css %} {% block feed %}
+{% endblock extra_css %} {% block modal_block %}
+<div
+	class="modal fade"
+	id="deletePost"
+	tabindex="-1"
+	aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">Advertencia</h1>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">Cuidado! Seguro que desea borra este post?</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+					Close
+				</button>
+				<button type="button" class="btn btn-danger">Eliminar</button>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock modal_block %} {% block feed %}
 
 <h1>{{request.user.get_username}}</h1>
 <p>{{request.user.description}}</p>
@@ -8,9 +35,18 @@
 <div class="d-flex justify-content-start align-items-center flex-wrap">
 	{% if posts %} {% for post in posts %}
 
-	<a class="p-2" href="{% url 'Single Post' id_post=post.id_post %}">
-		<img class="post_img" src="../media/{{post.id_img}}" alt="No se puede mostrar" />
-	</a>
+	<div class="position-relative">
+		<a class="p-2" href="{% url 'Single Post' id_post=post.id_post %}">
+			<img class="post_img" src="../media/{{post.id_img}}" alt="No se puede mostrar" />
+		</a>
+		<button
+			type="button"
+			class="btn btn-danger rounded-pill position-absolute top-0 end-0 me-2"
+			data-bs-toggle="modal"
+			data-bs-target="#deletePost">
+			-
+		</button>
+	</div>
 
 	{% endfor %} {% else %}
 	<p>No hay posts disponibles</p>
