@@ -1,6 +1,5 @@
 from django import forms
 from UserApp.models import CustomUser
-from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -24,16 +23,7 @@ class UserRegisterForm(UserCreationForm):
         model = CustomUser
         fields = ['username', "email"]
     
-'''
-    def save(self, request):
-        info = self.cleaned_data
-        user = get_user_model().objects.create_user(
-                                username = info['username'],
-                                email = info['email'],
-                                password = info['password'],
-                                first_name = info['first_name'],
-                                last_name = info['last_name'],
-                                description = info['biografia']
-                                )
-        login(request,user)
-'''
+class UserDeleteForm(forms.Form):
+
+    password = forms.CharField(widget=forms.PasswordInput(), label='Contraseña')
+    confirm = forms.BooleanField(initial=False  ,label='Me hago responsable',widget=forms.CheckboxInput())
