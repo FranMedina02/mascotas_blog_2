@@ -86,6 +86,8 @@ def user_settings(request):
 def profile(request, user = None):
     if user is None:
         user:CustomUser = request.user
+    else:
+        user:CustomUser = CustomUser.objects.get(id=user)
 
     user_posts = Post.objects.filter(id_user=user)
     n_posts = len(user_posts)
@@ -93,7 +95,7 @@ def profile(request, user = None):
 
 
     return render(request, 'UserApp/profile.html',
-                  context = {'posts':user_posts,'n_posts':n_posts})
+                  context = {'posts':user_posts,'n_posts':n_posts, 'profile':user})
 
 @login_required(login_url='/login/')
 def delete(request):
