@@ -1,5 +1,6 @@
 {% extends "mascotas_blog/home.html" %} {% load static %}{% block extra_css %}
 <link rel="stylesheet" href="{% static 'UserApp/css/styles.css' %}" />
+<script src="{% static 'UserApp/js/delete_modal.js' %}"></script>
 {% endblock extra_css %} {% block modal_block %}
 <div
 	class="modal fade"
@@ -26,7 +27,12 @@
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
 					Close
 				</button>
-				<button type="button" class="btn btn-danger">Eliminar</button>
+				<button
+					onClick="getDelete('{% url 'Delete Post' %}')"
+					type="button"
+					class="btn btn-danger">
+					Eliminar
+				</button>
 			</div>
 		</div>
 	</div>
@@ -48,7 +54,8 @@
 			type="button"
 			class="btn btn-danger rounded-pill position-absolute top-0 end-0 me-2"
 			data-bs-toggle="modal"
-			data-bs-target="#deletePost">
+			data-bs-target="#deletePost"
+			onClick="saveDelete({{post.id_post}})">
 			-
 		</button>
 		{% endif %}
