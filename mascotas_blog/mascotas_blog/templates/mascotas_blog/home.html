@@ -40,6 +40,10 @@
 								>Crear</a
 							>
 						</li>
+						{# temp #}
+						<li>
+							<p class="px-2">{{user.username}}{% if user.is_staff %} &#9824 {% endif %}</p>
+						</li>
 					</ul>
 
 					<form

@@ -17,7 +17,11 @@
 					data-bs-dismiss="modal"
 					aria-label="Close"></button>
 			</div>
-			<div class="modal-body">Cuidado! Seguro que desea borra este post?</div>
+			<div class="modal-body">
+				{% if user == profile %}Cuidado! Seguro que desea borrar este post?{% else %}
+				Cuidado! Esta publicacion no es suya. Esta accion se le brinda al ser administrador.
+				Usela responsablemente y a conciencia.{% endif %}
+			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
 					Close
@@ -29,8 +33,8 @@
 </div>
 {% endblock modal_block %} {% block feed %}
 
-<h1>{{request.user.get_username}}</h1>
-<p>{{request.user.description}}</p>
+<h1>{{profile.get_username}}</h1>
+<p>{{profile.description}}</p>
 <p>{{n_posts}} publicaciones</p>
 <div class="d-flex justify-content-start align-items-center flex-wrap">
 	{% if posts %} {% for post in posts %}
@@ -39,6 +43,7 @@
 		<a class="p-2" href="{% url 'Single Post' id_post=post.id_post %}">
 			<img class="post_img" src="../media/{{post.id_img}}" alt="No se puede mostrar" />
 		</a>
+		{% if user == profile or user.is_staff %}
 		<button
 			type="button"
 			class="btn btn-danger rounded-pill position-absolute top-0 end-0 me-2"
@@ -46,6 +51,7 @@
 			data-bs-target="#deletePost">
 			-
 		</button>
+		{% endif %}
 	</div>
 
 	{% endfor %} {% else %}
