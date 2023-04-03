@@ -8,3 +8,11 @@ a>img.post_img{
     width: 250px;
     height: auto;
 }
+
+.card {
+    border-radius: 32px;
+}
+
+.card img{
+    border-radius: 32px 0px 0px 32px;
+}
