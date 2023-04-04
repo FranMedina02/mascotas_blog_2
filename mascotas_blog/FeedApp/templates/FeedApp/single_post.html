@@ -1,26 +1,29 @@
 {% extends "mascotas_blog/home.html" %} {% load static %} {% block feed %} {% if post %}
 
-<div class="card shadow-sm m-3">
-	<div class="row g-0">
-		<div class="col-6">
-			<img
-				src="../media/{{post.id_img}}"
-				class="card-img-top post_image"
-				alt="No se puede mostrar" />
-		</div>
-		<div class="col-6">
-			<div class="card-body">
-				<h5 class="card-title h2">{{post.title}}</h5>
-				<h5 class="card-title text-muted">{{post.subtitle}}</h5>
-				<p class="card-text">{{post.description}}</p>
-				<a href="{% url 'Owner' user=post.id_user.id %}" class="card-link"
-					>@{{post.id_user.username}}</a
-				>
+<div class="overflow-y-scroll">
+	<div class="card shadow-sm m-3">
+		<div class="row g-0">
+			<div class="col-6">
+				<img
+					src="../media/{{post.id_img}}"
+					class="card-img-top post_image"
+					alt="No se puede mostrar" />
+			</div>
+			<div class="col-6">
+				<div class="card-body">
+					<h5 class="card-title h2">{{post.title}}</h5>
+					<h5 class="card-title text-muted">{{post.subtitle}}</h5>
+					<p class="card-text">{{post.description}}</p>
+					<a href="{% url 'Owner' user=post.id_user.id %}" class="card-link"
+						>@{{post.id_user.username}}</a
+					>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-{% else %}
-<p>No hay posts disponibles</p>
-{% endif %} {% endblock feed %}
+	{% else %}
+	<p>No hay posts disponibles</p>
+	{% endif %}
+</div>
+{% endblock feed %}
