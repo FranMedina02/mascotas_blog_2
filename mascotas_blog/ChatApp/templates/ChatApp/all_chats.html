@@ -1,26 +1,48 @@
-{% extends "mascotas_blog/home.html" %} {% load static %}{% block extra_css %}
-<link rel="stylesheet" href="{% static 'ChatApp/css/styles.css' %}" />
+{% extends "mascotas_blog/home.html" %} {% load static %} {% block extra_css %} 
+{#<link rel="stylesheet" href="{% static 'ChatApp/css/styles.css' %}" />#} 
 {% endblock extra_css %} {% block feed %}
 
-<div class="overflow-hidden">
-	<div class="card mb-3 w-100 h-100">
-		<div class="row g-0">
+<div class="overflow-hidden h-100">
+	<div class="card mb-3" style="height:100%;">
+		<div class="row g-0 h-100">
 			<div class="col-md-4">
-				<img src="..." class="img-fluid rounded-start" alt="..." />
+				<div class="all_chats">
+					<ul class="list-group">
+						{% for chat in chats %}
+						<a  href="{% url 'Single Chat' chat.id_chat %}" 
+							class="list-group-item list-group-item-action" aria-current="true">
+								{% if chat.user_1 == user %} {{chat.user_2.get_username}} {% else %} {{chat.user_1.get_username}} {% endif %}
+								<span class="badge bg-primary rounded-pill">14</span>
+						</a>
+						{% endfor %}
+					</ul>
+				</div>
 			</div>
 			<div class="col-md-8">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">
-						This is a wider card with supporting text below as a natural lead-in to
-						additional content. This content is a little bit longer.
-					</p>
-					<p class="card-text">
-						<small class="text-body-secondary">Last updated 3 mins ago</small>
-					</p>
+				<div class="card-body p-0 w-100 h-100">
+					{% block conversation %} 
+					<div class="d-flex align-items-start flex-column list-group h-100 w-100">
+						<div class="list-group-item upper_part w-100">
+							<a
+							href="{% url 'Profile' %}" {# link to profile #}
+							class="d-block link-dark text-decoration-none">
+							<img class="bi bi-person"{# media avatar #}
+							src="{% static 'assets/icons/person.svg' %}" alt="" width="32"
+							height="32" class="rounded-circle" />
+							<span>Ninguna conversacion seleccionada</span>
+							</a>
+							
+						</div>
+						<div class="list-group-item midle_part flex-fill w-100"></div>
+						<div class="list-group-item lower_part flex-fill w-100 h-10"></div>
+					
+
+
+					</div>
+					{% endblock conversation %}
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-{% block conversation %}{% endblock conversation %} {% endblock feed %}
+{% endblock feed %}
