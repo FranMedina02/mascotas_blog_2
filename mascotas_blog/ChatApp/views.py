@@ -4,7 +4,7 @@ from UserApp.models import CustomUser
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth.hashers import make_password
-
+import random
 # Create your views here.
 @login_required(login_url='/login/')
 def conversation(request, conversation:int):
@@ -18,20 +18,10 @@ def conversation(request, conversation:int):
 def all_chats(request):
 
     user = request.user
-    context = {}
-
-    genericUser = CustomUser.objects.get(id = 45)
-
-    chat1 = Chat(user_1 = user, user_2 = genericUser)
-    chat1.save()
-    chat2 = Chat(user_1 = genericUser, user_2 = user)
-    chat2.save()
 
 
     chats = Chat.objects.filter(Q(user_1 = user) | Q(user_2 = user))
-    print(chats)
+    msgs = Message.objects.filter(chat__in = chats).order_by('chat_id','date')
 
-    
-    
 
-    return render(request, 'ChatApp/all_chats.html')
+    return render(request, 'ChatApp/all_chats.html', {'chats': chats, 'mensajes':msgs})
