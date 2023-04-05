@@ -1,32 +1,8 @@
 {% extends "mascotas_blog/home.html" %} {% load static %} {% block extra_css %}
 <link rel="stylesheet" href="{% static 'ChatApp/css/styles.css' %}" />
-{% endblock extra_css %} {% block feed %} {% comment "keep" %} {% for chat in chats %}
-<a
-	href="{% url 'Single Chat' chat.id_chat %}"
-	class="list-group-item list-group-item-action"
-	aria-current="true">
-	{% if chat.user_1 == user %} {{chat.user_2.get_username}} {% else %}
-	{{chat.user_1.get_username}} {% endif %}
-	<span class="badge bg-primary rounded-pill">14</span>
-</a>
-{% endfor %}
+{% endblock extra_css %} {% block feed %} 
 
-<a href="{% url 'Profile' %}" {# link to profile #} class="d-block link-dark text-decoration-none">
-	<img
-		class="bi bi-person"
-		{#
-		media
-		avatar
-		#}
-		src="{% static 'assets/icons/person.svg' %}"
-		alt=""
-		width="32"
-		height="32"
-		class="rounded-circle" />
-	<span>Ninguna conversacion seleccionada</span>
-</a>
 
-{% block conversation %} {% endblock conversation %} {% endcomment %}
 <div class="container py-3 px-4 h-100">
 	<div class="row rounded-lg shadow h-100">
 		<!-- Users box-->
@@ -38,20 +14,26 @@
 
 				<div class="messages-box">
 					<div class="list-group rounded-0">
+						{% for chat in chats %}
 						<a
-							class="list-group-item list-group-item-action active text-white rounded-0">
+							class="list-group-item list-group-item-action rounded-0"
+							href="{% url 'Single Chat' chat.id_chat %}"
+							aria-current="true">
 							<div class="media">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
-									alt="user"
-									width="50"
-									class="rounded-circle" />
-								<div class="media-bodyms-4">
-									<div
-										class="d-flex align-items-center justify-content-between mb-1">
-										<h6 class="mb-0">Jason Doe</h6>
-										<small class="small font-weight-bold">25 Dec</small>
-									</div>
+								<div
+									class="d-flex align-items-center justify-content-start mb-1 gap-4">
+									<img
+										src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
+										alt="user"
+										width="50"
+										class="rounded-circle bi bi-person"/>
+									<h6 class="mb-0">
+										{% if chat.user_1 == user %} {{chat.user_2.get_username}}
+										{%else %} {{chat.user_1.get_username}} {% endif %}
+									</h6>
+									<small class="small font-weight-bold">25 Dec</small>
+								</div>
+								<div class="ms-4">
 									<p class="font-italic mb-0 text-small">
 										Lorem ipsum dolor sit amet, consectetur adipisicing elit,
 										sed do eiusmod tempor incididunt ut labore.
@@ -59,265 +41,35 @@
 								</div>
 							</div>
 						</a>
-
-						<a
-							href="#"
-							class="list-group-item list-group-item-action list-group-item-light rounded-0">
-							<div class="media">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
-									alt="user"
-									width="50"
-									class="rounded-circle" />
-								<div class="media-bodyms-4">
-									<div
-										class="d-flex align-items-center justify-content-between mb-1">
-										<h6 class="mb-0">Jason Doe</h6>
-										<small class="small font-weight-bold">14 Dec</small>
-									</div>
-									<p class="font-italic text-muted mb-0 text-small">
-										Lorem ipsum dolor sit amet, consectetur. incididunt ut
-										labore.
-									</p>
-								</div>
-							</div>
-						</a>
-
-						<a
-							href="#"
-							class="list-group-item list-group-item-action list-group-item-light rounded-0">
-							<div class="media">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
-									alt="user"
-									width="50"
-									class="rounded-circle" />
-								<div class="media-bodyms-4">
-									<div
-										class="d-flex align-items-center justify-content-between mb-1">
-										<h6 class="mb-0">Jason Doe</h6>
-										<small class="small font-weight-bold">9 Nov</small>
-									</div>
-									<p class="font-italic text-muted mb-0 text-small">
-										consectetur adipisicing elit, sed do eiusmod tempor
-										incididunt ut labore.
-									</p>
-								</div>
-							</div>
-						</a>
-
-						<a
-							href="#"
-							class="list-group-item list-group-item-action list-group-item-light rounded-0">
-							<div class="media">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
-									alt="user"
-									width="50"
-									class="rounded-circle" />
-								<div class="media-bodyms-4">
-									<div
-										class="d-flex align-items-center justify-content-between mb-1">
-										<h6 class="mb-0">Jason Doe</h6>
-										<small class="small font-weight-bold">18 Oct</small>
-									</div>
-									<p class="font-italic text-muted mb-0 text-small">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-										sed do eiusmod tempor incididunt ut labore.
-									</p>
-								</div>
-							</div>
-						</a>
-
-						<a
-							href="#"
-							class="list-group-item list-group-item-action list-group-item-light rounded-0">
-							<div class="media">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
-									alt="user"
-									width="50"
-									class="rounded-circle" />
-								<div class="media-bodyms-4">
-									<div
-										class="d-flex align-items-center justify-content-between mb-1">
-										<h6 class="mb-0">Jason Doe</h6>
-										<small class="small font-weight-bold">17 Oct</small>
-									</div>
-									<p class="font-italic text-muted mb-0 text-small">
-										consectetur adipisicing elit, sed do eiusmod tempor
-										incididunt ut labore.
-									</p>
-								</div>
-							</div>
-						</a>
-
-						<a
-							href="#"
-							class="list-group-item list-group-item-action list-group-item-light rounded-0">
-							<div class="media">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
-									alt="user"
-									width="50"
-									class="rounded-circle" />
-								<div class="media-bodyms-4">
-									<div
-										class="d-flex align-items-center justify-content-between mb-1">
-										<h6 class="mb-0">Jason Doe</h6>
-										<small class="small font-weight-bold">2 Sep</small>
-									</div>
-									<p class="font-italic text-muted mb-0 text-small">
-										Quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-										ea commodo consequat.
-									</p>
-								</div>
-							</div>
-						</a>
-
-						<a
-							href="#"
-							class="list-group-item list-group-item-action list-group-item-light rounded-0">
-							<div class="media">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
-									alt="user"
-									width="50"
-									class="rounded-circle" />
-								<div class="media-bodyms-4">
-									<div
-										class="d-flex align-items-center justify-content-between mb-1">
-										<h6 class="mb-0">Jason Doe</h6>
-										<small class="small font-weight-bold">30 Aug</small>
-									</div>
-									<p class="font-italic text-muted mb-0 text-small">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-										sed do eiusmod tempor incididunt ut labore.
-									</p>
-								</div>
-							</div>
-						</a>
-
-						<a
-							href="#"
-							class="list-group-item list-group-item-action list-group-item-light rounded-0">
-							<div class="media">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
-									alt="user"
-									width="50"
-									class="rounded-circle" />
-								<div class="media-bodyms-4">
-									<div
-										class="d-flex align-items-center justify-content-between mb-3">
-										<h6 class="mb-0">Jason Doe</h6>
-										<small class="small font-weight-bold">21 Aug</small>
-									</div>
-									<p class="font-italic text-muted mb-0 text-small">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-										sed do eiusmod tempor incididunt ut labore.
-									</p>
-								</div>
-							</div>
-						</a>
+						{% endfor %}
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<!-- Chat Box-->
 		<div class="col-7 px-0 h-100">
-			<div class="px-0 py-0 chat-box bg-white h-80">
-				<!-- Sender Message-->
-				<div class="media w-50 mb-3">
-					<img
-						src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
-						alt="user"
-						width="50"
-						class="rounded-circle" />
-					<div class="media-bodyms-3">
-						<div class="bg-light rounded py-2 px-3 mb-2">
-							<p class="text-small mb-0 text-muted">
-								Test which is a new approach all solutions
-							</p>
-						</div>
-						<p class="small text-muted">12:00 PM | Aug 13</p>
-					</div>
-				</div>
-
-				<!-- Reciever Message-->
-				<div class="media w-50 ms-auto mb-3">
-					<div class="media-body">
-						<div class="bg-primary rounded py-2 px-3 mb-2">
-							<p class="text-small mb-0 text-white">
-								Test which is a new approach to have all solutions
-							</p>
-						</div>
-						<p class="small text-muted">12:00 PM | Aug 13</p>
-					</div>
-				</div>
-
-				<!-- Sender Message-->
-				<div class="media w-50 mb-3">
-					<img
-						src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
-						alt="user"
-						width="50"
-						class="rounded-circle" />
-					<div class="media-bodyms-3">
-						<div class="bg-light rounded py-2 px-3 mb-2">
-							<p class="text-small mb-0 text-muted">
-								Test, which is a new approach to have
-							</p>
-						</div>
-						<p class="small text-muted">12:00 PM | Aug 13</p>
-					</div>
-				</div>
-
-				<!-- Reciever Message-->
-				<div class="media w-50 ms-auto mb-3">
-					<div class="media-body">
-						<div class="bg-primary rounded py-2 px-3 mb-2">
-							<p class="text-small mb-0 text-white">
-								Apollo University, Delhi, India Test
-							</p>
-						</div>
-						<p class="small text-muted">12:00 PM | Aug 13</p>
-					</div>
-				</div>
-
-				<!-- Sender Message-->
-				<div class="media w-50 ms-3 mb-3">
-					<div class="media-body ms-3">
-						<div class="bg-light rounded py-2 px-3 mb-2">
-							<p class="text-small mb-0 text-muted">Insertar mensaje</p>
-						</div>
-						<p class="small text-muted">12:00 PM | Aug 13</p>
-					</div>
-				</div>
-
-				<!-- Reciever Message-->
-				<div class="media w-50 ms-auto me-3 mb-3">
-					<div class="media-body">
-						<div class="bg-primary rounded py-2 px-3 mb-2">
-							<p class="text-small mb-0 text-white">
-								Insertar mensaje
-							</p>
-						</div>
-						<p class="small text-muted">12:00 PM | Aug 13</p>
-					</div>
-				</div>
-
+			<div class="px-0 py-0 chat-box bg-white position-relative">
+				{% block conversation %} 
 				
-				<form action="#" class="bg-light sticky-bottom">
-					<div class="input-group">
+				{% endblock conversation %}
+				<form
+					action="#"
+					class="bg-light position-absolute bottom-0 start-50 translate-middle-x w-100">
+					<div class="input-group d-flex align-items-center">
 						<input
-						type="text"
-						placeholder="Type a message"
-						aria-describedby="button-addon2"
-						class="form-control rounded-0 border-0 py-4 bg-light" />
+							type="text"
+							placeholder="Type a message"
+							aria-describedby="button-addon2"
+							class="form-control rounded-0 border-0 py-4 bg-light" />
+
 						<div class="input-group-append">
 							<button id="button-addon2" type="submit" class="btn btn-link">
-								<i class="fa fa-paper-plane"></i>
+								<img
+									class="bi"
+									width="24"
+									height="24"
+									src="{% static 'assets/icons/send-fill.svg' %}" />
 							</button>
 						</div>
 					</div>
