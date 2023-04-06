@@ -1,6 +1,15 @@
 {% extends "mascotas_blog/home.html" %} {% load static %} {% block extra_css %}
 <link rel="stylesheet" href="{% static 'ChatApp/css/styles.css' %}" />
-{% endblock extra_css %} {% block feed %} 
+{% endblock extra_css %}
+{% block extra_js %}
+<script>
+
+    const element = document.getElementById("chatBox");
+	element.scrollTop = element.scrollHeight;
+
+</script>
+{% endblock extra_js %}
+{% block feed %} 
 
 
 <div class="container py-3 px-4 h-100">
@@ -49,11 +58,12 @@
 
 		<!-- Chat Box-->
 		<div class="col-7 px-0 h-100">
-			<div class="px-0 py-0 chat-box bg-white">
+			<div class="px-0 py-0 chat-box bg-white" id="chatBox">
 				{% block conversation %} 
 				
 				{% endblock conversation %}
 				<form
+					id="chatBar"
 					action="#"
 					class="bg-light">
 					<div class="input-group d-flex align-items-center">
