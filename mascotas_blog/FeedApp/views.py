@@ -54,3 +54,11 @@ def search(request):
     users = CustomUser.objects.filter(username__icontains=username)
 
     return render(request, 'FeedApp/search_results.html', {'results':users})
+
+def delete(request, post_id:int):
+
+    post = Post.objects.get(id_post=post_id)
+
+    post.delete()
+    
+    return redirect('Owner', user=post.id_user.id)

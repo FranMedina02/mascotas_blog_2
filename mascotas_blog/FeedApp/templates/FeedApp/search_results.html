@@ -1,28 +1,31 @@
 {% extends "mascotas_blog/home.html" %} {% load static %} {% block feed %}
 
-<form
-	action="{% url 'Search'  %}"
-	method="GET"
-	class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
-	role="search">
-	<div class="input-group mb-3">
-		<span class="input-group-text" id="basic-addon1">@</span>
-		<input
-			name="username"
-			type="text"
-			class="form-control"
-			placeholder="Username"
-			aria-label="Username"
-			aria-describedby="basic-addon1" />
-	</div>
-</form>
+<div class="overflow-y-auto">
+	<form
+		action="{% url 'Search'  %}"
+		method="GET"
+		class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
+		role="search">
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="basic-addon1">@</span>
+			<input
+				name="username"
+				type="text"
+				class="form-control"
+				placeholder="Username"
+				aria-label="Username"
+				aria-describedby="basic-addon1" />
+		</div>
+	</form>
 
-{% if results %}
-<ul>
-	{% for result in results %}
-	<li><a href="{% url 'Owner' result.pk %}">{{result.get_username}}</a></li>
-	{% endfor %}
-</ul>
-{% else %}
-<h1>No se han encontrado usuarios</h1>
-{% endif %} {% endblock feed %}
+	{% if results %}
+	<ul>
+		{% for result in results %}
+		<li><a href="{% url 'Owner' result.pk %}">{{result.get_username}}</a></li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	<h1>No se han encontrado usuarios</h1>
+	{% endif %}
+</div>
+{% endblock feed %}

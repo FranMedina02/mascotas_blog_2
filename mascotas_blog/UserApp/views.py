@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
-from UserApp.forms import UserLoginForm, UserEditForm, UserRegisterForm
+from UserApp.forms import UserLoginForm, UserEditForm, UserRegisterForm, UserDeleteForm
 from django.contrib.auth import authenticate, login as dj_login, logout as dj_logout
 from FeedApp.models import Post
 from UserApp.models import CustomUser
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.contrib.auth.hashers import check_password
 
 def login(request):
     if request.user.is_authenticated:
@@ -19,12 +20,10 @@ def login(request):
             user = authenticate(request, username=info['username'], password=info['password'])
 
             if user is not None:
-                print('authenticated')
                 dj_login(request,user)
                 return redirect(request.GET.get('next', '/'))
             else:
-                print('not authenticated')
-                form.add_error(field=None,error='Error en la autenticcion')
+                form.add_error(field=None,error='Error en la autenticacion')
                 return render(request, 'UserApp/login.html', {'form':form})
     else:
         form = UserLoginForm()
@@ -39,7 +38,8 @@ def register(request):
             try:
                 CustomUser.objects.get(username=username)
             except CustomUser.DoesNotExist:
-                #form.save(request)
+                user = form.save(request)
+                dj_login(request,user)
                 return redirect('Home') 
             else:
                 form.add_error(field='username',error='Usuario ya existente')
@@ -56,7 +56,7 @@ def logout(request):
 @login_required(login_url='/login/')
 def user_settings(request):
 
-    user = request.user
+    user:CustomUser = request.user
 
     if request.method == 'POST':
         
@@ -86,7 +86,9 @@ def user_settings(request):
 @login_required(login_url='/login/')
 def profile(request, user = None):
     if user is None:
-        user = request.user
+        user:CustomUser = request.user
+    else:
+        user:CustomUser = CustomUser.objects.get(id=user)
 
     user_posts = Post.objects.filter(id_user=user)
     n_posts = len(user_posts)
@@ -94,9 +96,33 @@ def profile(request, user = None):
 
 
     return render(request, 'UserApp/profile.html',
-                  context = {'posts':user_posts,'n_posts':n_posts})
-    
+                  context = {'posts':user_posts,'n_posts':n_posts, 'profile':user})
 
+@login_required(login_url='/login/')
+def delete(request):
+
+    user:CustomUser = request.user
+
+    if request.method == 'POST':
+
+        form = UserDeleteForm(request.POST)
+
+        if form.is_valid():
+            info = form.cleaned_data
+            
+            if not check_password(info['password'], user.password):
+                form.add_error(field='password', error='Contraseña incorrecta')
+            else:
+                user.delete()
+                return redirect('Home')
+        
+        return render(request, 'UserApp/delete.html', {'delete_form':form})
+
+
+    else:
+        form = UserDeleteForm()
+    
+    return render(request, 'UserApp/delete.html', {'delete_form':form})
     
 
 

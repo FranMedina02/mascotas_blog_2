@@ -68,7 +68,7 @@ Se recomienda realizar alguna publicacion con el usuario para visualizar correct
 ## A Futuro (30/3/2023)
 
 - [x] Delete user
-- [ ] Delete Post if owner
+- [x] Delete Post if owner or admin
 - [ ] Edit Post if owner
 - [ ] Chats
 - [ ] Chat unico

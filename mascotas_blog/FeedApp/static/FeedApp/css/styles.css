@@ -5,6 +5,14 @@ section {
 
 a>img.post_img{
     border-radius: 16px;
-    width: 250px;
+    width: 230px;
     height: auto;
+}
+
+.card {
+    border-radius: 32px;
+}
+
+.card img{
+    border-radius: 32px 0px 0px 32px;
 }
