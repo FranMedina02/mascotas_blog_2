@@ -3,19 +3,26 @@ from ChatApp.models import Chat, Message
 from UserApp.models import CustomUser
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.contrib.auth.hashers import make_password
-import random
+from django.http import Http404
+
 # Create your views here.
 @login_required(login_url='/login/')
 def conversation(request, conversation:int):
-    user = request.user
-
-
+    user :CustomUser = request.user
     chats = Chat.objects.filter(Q(user_1 = user) | Q(user_2 = user))
-    msgs = Message.objects.filter(chat__in = chats).filter(chat=conversation).order_by('chat_id','date')
+    chat = Chat.objects.get(id_chat = conversation)
     
-    for msg in msgs:
-        print('sended') if msg.sender == user else print('recived')
+    if not chat in chats:
+        raise Http404('La conversacion no le pertenece al usuario')
+
+    if request.method == 'POST':
+        if request.POST['message']:
+            Message.objects.create(sender = user, chat = chat,
+                                   message = request.POST['message'])
+
+    
+    msgs = Message.objects.filter(chat = chat).filter(chat=conversation).order_by('chat_id','date')
+
 
     return render(request, 'ChatApp/single_chat.html', {'chats': chats, 'mensajes': msgs})
 

@@ -64,10 +64,12 @@
 				{% endblock conversation %}
 				<form
 					id="chatBar"
-					action="#"
-					class="bg-light">
+					action=""
+					class="bg-light"
+					method="POST">{% csrf_token %}
 					<div class="input-group d-flex align-items-center">
 						<input
+							name="message"
 							type="text"
 							placeholder="Type a message"
 							aria-describedby="button-addon2"
