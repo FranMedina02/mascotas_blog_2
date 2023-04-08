@@ -40,6 +40,10 @@
 {% endblock modal_block %} {% block feed %}
 
 <div class="overflow-y-auto">
+	<img
+		src="{% if profile.avatar %}{{ profile.avatar.url }}{% else %}{% static 'assets/icons/person.svg' %}{% endif %}"
+		alt=""
+		height="100" />
 	<h1>{{profile.get_username}}</h1>
 	<p>{{profile.description}}</p>
 	<p>{{n_posts}} publicaciones</p>

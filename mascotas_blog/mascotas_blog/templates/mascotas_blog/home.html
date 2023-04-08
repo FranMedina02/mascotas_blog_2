@@ -78,7 +78,7 @@
 							data-bs-toggle="dropdown"
 							aria-expanded="false">
 							<img class="bi bi-person rounded-circle"
-							src="{{ user.avatar.url }}" alt="" width="37"
+							src="{% if user.avatar %}{{ user.avatar.url }}{% else %}{% static 'assets/icons/person.svg' %}{% endif %}" alt="" width="37"
 							height="37"/>
 						</a>
 
