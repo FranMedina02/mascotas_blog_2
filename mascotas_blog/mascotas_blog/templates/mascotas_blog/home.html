@@ -77,9 +77,9 @@
 							class="d-block link-dark text-decoration-none dropdown-toggle"
 							data-bs-toggle="dropdown"
 							aria-expanded="false">
-							<img class="bi bi-person"{% comment "media avatar" %}{% endcomment %}
-							src="{% static 'assets/icons/person.svg' %}" alt="" width="32"
-							height="32" class="rounded-circle" />
+							<img class="bi bi-person rounded-circle"
+							src="{{ user.avatar.url }}" alt="" width="37"
+							height="37"/>
 						</a>
 
 						<ul class="dropdown-menu text-small">
