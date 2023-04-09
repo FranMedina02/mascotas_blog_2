@@ -1,4 +1,8 @@
-{% extends "ChatApp/all_chats.html" %} {% load static %} {% block conversation %}
+{% extends "ChatApp/all_chats.html" %} {% load static %} 
+
+{% block is_active %}{% if chat.id_chat == conv %} active {% endif %}{% endblock is_active %}
+
+{% block conversation %}
 
 {% for msg in mensajes %}
 

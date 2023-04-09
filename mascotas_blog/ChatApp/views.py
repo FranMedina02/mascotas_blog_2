@@ -8,6 +8,8 @@ from django.http import Http404
 # Create your views here.
 @login_required(login_url='/login/')
 def conversation(request, conversation:int):
+    
+    conversation = int(conversation)
     user :CustomUser = request.user
     chats = Chat.objects.filter(Q(user_1 = user) | Q(user_2 = user))
     chat = Chat.objects.get(id_chat = conversation)
@@ -23,8 +25,9 @@ def conversation(request, conversation:int):
     
     msgs = Message.objects.filter(chat = chat).filter(chat=conversation).order_by('chat_id','date')
 
+    print(type(conversation),type(chat.id_chat))
 
-    return render(request, 'ChatApp/single_chat.html', {'chats': chats, 'mensajes': msgs})
+    return render(request, 'ChatApp/single_chat.html', {'chats': chats, 'mensajes': msgs, 'conv': conversation})
 
 
 @login_required(login_url='/login/')
