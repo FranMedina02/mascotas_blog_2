@@ -35,12 +35,11 @@
 										{% if chat.user_1 == user %} {{chat.user_2.get_username}}
 										{%else %} {{chat.user_1.get_username}} {% endif %}
 									</h6>
-									<small class="small font-weight-bold">25 Dec</small>
+									<small class="small font-weight-bold">{{chat.last_msg.date}}</small>
 								</div>
 								<div class="ms-4">
 									<p class="font-italic mb-0 text-small">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-										sed do eiusmod tempor incididunt ut labore.
+										{{chat.last_msg.message}}
 									</p>
 								</div>
 							</div>
