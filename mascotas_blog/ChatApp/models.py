@@ -6,6 +6,8 @@ class Chat(models.Model):
     id_chat = models.AutoField(primary_key=True)
     user_1 = models.ForeignKey(CustomUser, on_delete= models.CASCADE, related_name='user_1')
     user_2 = models.ForeignKey(CustomUser, on_delete= models.CASCADE, related_name='user_2')
+    last_msg = models.ForeignKey('Message',on_delete= models.DO_NOTHING, related_name='last_msg', null=True)
+
 
 class Message(models.Model):
     id_msg = models.AutoField(primary_key=True)
