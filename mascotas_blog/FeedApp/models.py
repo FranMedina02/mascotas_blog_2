@@ -25,6 +25,7 @@ class Post(models.Model):
     id_user = models.ForeignKey(CustomUser, on_delete= models.CASCADE)
     id_img = models.ImageField(upload_to=path_and_rename,
                                 max_length=255, null=True, blank=True)
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self) -> str:
         return f'id: {self.id_post} - title: {self.title} - img: {self.id_img}'
