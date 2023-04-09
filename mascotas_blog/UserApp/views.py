@@ -60,13 +60,13 @@ def user_settings(request):
 
     if request.method == 'POST':
         
-        form = UserEditForm(request.POST)
+        form = UserEditForm(request.POST, request.FILES)
 
         if form.is_valid():
 
             info = form.cleaned_data
-            print('valid')
 
+            user.avatar = info['avatar'] or user.avatar
             user.username = info['username'] or user.username
             user.email = info['email'] or user.email
             user.first_name = info['first_name'] or user.first_name

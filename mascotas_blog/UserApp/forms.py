@@ -10,7 +10,7 @@ class UserLoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput())
 
 class UserEditForm(forms.Form):
-
+    avatar = forms.ImageField(required=False)
     username = forms.CharField(max_length=25, required=False)
     email = forms.EmailField(max_length=35, required=False)
     first_name = forms.CharField(max_length=25, required=False)
