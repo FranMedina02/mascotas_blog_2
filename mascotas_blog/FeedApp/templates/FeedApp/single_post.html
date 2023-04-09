@@ -5,12 +5,17 @@
 		<div class="row g-0">
 			<div class="col-6">
 				<img
-					src="../media/{{post.id_img}}"
+					src="{{post.id_img.url}}"
 					class="card-img-top post_image"
 					alt="No se puede mostrar" />
 			</div>
 			<div class="col-6">
 				<div class="card-body">
+					<img
+						class="rounded-circle"
+						src="{% if post.id_user.avatar %}{{ post.id_user.avatar.url }}{% else %}{% static 'assets/icons/person.svg' %}{% endif %}"
+						alt=""
+						height="100" />
 					<h5 class="card-title h2">{{post.title}}</h5>
 					<h5 class="card-title text-muted">{{post.subtitle}}</h5>
 					<p class="card-text">{{post.description}}</p>
