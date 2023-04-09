@@ -1,6 +1,6 @@
 {% extends "mascotas_blog/home.html" %} {% load static %} {% block feed %}
 
-<div class="d-flex justify-content-start align-items-center flex-wrap">
+<div class="d-flex justify-content-start align-items-start flex-wrap overflow-y-auto">
 	{% if posts %} {% for post in posts %}
 
 	<a class="p-2" href="{% url 'Single Post' id_post=post.id_post %}">

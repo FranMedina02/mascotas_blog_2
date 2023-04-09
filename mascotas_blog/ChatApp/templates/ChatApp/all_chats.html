@@ -1,0 +1,93 @@
+{% extends "mascotas_blog/home.html" %} {% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'ChatApp/css/styles.css' %}" />
+{% endblock extra_css %}
+{% block extra_js %}
+<script>
+
+    const element = document.getElementById("chatBox");
+	element.scrollTop = element.scrollHeight;
+
+</script>
+{% endblock extra_js %}
+{% block feed %} 
+
+
+<div class="container py-3 px-4 h-100">
+	<div class="row rounded-lg shadow h-100">
+		<!-- Users box-->
+		<div class="col-5 px-0 overflow-y-auto h-100">
+			<div class="bg-white">
+				<div class="bg-gray px-4 py-2 bg-light">
+					<p class="h5 mb-0 py-1">Recent</p>
+				</div>
+
+				<div class="messages-box">
+					<div class="list-group rounded-0">
+						{% for chat in chats %}
+						<a
+							class="list-group-item list-group-item-action rounded-0"
+							href="{% url 'Single Chat' chat.id_chat %}"
+							aria-current="true">
+							<div class="media">
+								<div
+									class="d-flex align-items-center justify-content-start mb-1 gap-4">
+									<img
+										src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
+										alt="user"
+										width="50"
+										class="rounded-circle bi bi-person"/>
+									<h6 class="mb-0">
+										{% if chat.user_1 == user %} {{chat.user_2.get_username}}
+										{%else %} {{chat.user_1.get_username}} {% endif %}
+									</h6>
+									<small class="small font-weight-bold">25 Dec</small>
+								</div>
+								<div class="ms-4">
+									<p class="font-italic mb-0 text-small">
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+										sed do eiusmod tempor incididunt ut labore.
+									</p>
+								</div>
+							</div>
+						</a>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Chat Box-->
+		<div class="col-7 px-0 h-100">
+			<div class="px-0 py-0 chat-box bg-white" id="chatBox">
+				{% block conversation %} 
+				
+				{% endblock conversation %}
+				<form
+					id="chatBar"
+					action=""
+					class="bg-light"
+					method="POST">{% csrf_token %}
+					<div class="input-group d-flex align-items-center">
+						<input
+							name="message"
+							type="text"
+							placeholder="Type a message"
+							aria-describedby="button-addon2"
+							class="form-control rounded-0 border-0 py-4 bg-light" />
+
+						<div class="input-group-append">
+							<button id="button-addon2" type="submit" class="btn btn-link">
+								<img
+									class="bi"
+									width="24"
+									height="24"
+									src="{% static 'assets/icons/send-fill.svg' %}" />
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock feed %}

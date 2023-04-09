@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/global_styles.css' %}" />
 		<link rel="icon" href="{% static 'assets/icons/logo.svg' %}" type="image/x-icon" />
 		<link rel="stylesheet" href="{% static 'FeedApp/css/styles.css' %}" />
 		{% block extra_css %}{% endblock extra_css %}
@@ -103,7 +104,7 @@
 			</div>
 		</header>
 
-		<section class="m-0 p-2 overflow-y-scroll position-relative">
+		<section class="m-0 p-2 position-relative">
 			{% block feed %} {% endblock feed %}
 		</section>
 
@@ -163,5 +164,6 @@
 		</footer>
 
 		<script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+		{% block extra_js %}{% endblock extra_js %}
 	</body>
 </html>

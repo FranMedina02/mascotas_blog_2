@@ -38,7 +38,8 @@ def register(request):
             try:
                 CustomUser.objects.get(username=username)
             except CustomUser.DoesNotExist:
-                #form.save(request)
+                user = form.save(request)
+                dj_login(request,user)
                 return redirect('Home') 
             else:
                 form.add_error(field='username',error='Usuario ya existente')
