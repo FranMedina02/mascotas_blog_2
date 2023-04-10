@@ -32,7 +32,27 @@
 
 {% endif %}
 
-
-
 {% endfor %}
+
+<form id="chatBar" action="" class="bg-light" method="POST">
+    {% csrf_token %}
+    <div class="input-group d-flex align-items-center">
+        <input
+            name="message"
+            type="text"
+            placeholder="Type a message"
+            aria-describedby="button-addon2"
+            class="form-control rounded-0 border-0 py-4 bg-light" />
+
+        <div class="input-group-append">
+            <button id="button-addon2" type="submit" class="btn btn-link">
+                <img
+                    class="bi"
+                    width="24"
+                    height="24"
+                    src="{% static 'assets/icons/send-fill.svg' %}" />
+            </button>
+        </div>
+    </div>
+</form>
 {% endblock conversation %}
