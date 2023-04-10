@@ -29,10 +29,17 @@
 					</a>
 
 					<ul
-						class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+						class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center align-items-center mb-md-0">
 						<li>
 							<a href="{% url 'Home' %}" class="nav-link px-2 link-secondary">Home</a>
 						</li>
+						{% if not user.is_authenticated %}
+						<li>
+							<a href="{% url 'Log in' %}" class="nav-link px-2 link-secondary"
+								>Log in</a
+							>
+						</li>
+						{% endif %}
 						<li>
 							<a
 								href="{% url 'Crear Post' %}"
@@ -41,9 +48,13 @@
 								>Crear</a
 							>
 						</li>
-						{# temp #}
 						<li>
-							<p class="px-2">{{user.username}}{% if user.is_staff %} &#9824 {% endif %}</p>
+							<a
+								class="nav-link btn mx-2 link-dark"
+								role="button"
+								href="{% url 'Profile' %}">
+								{% if user.is_staff %} &#9824; {% endif %} {{user.username}}
+							</a>
 						</li>
 					</ul>
 
@@ -77,9 +88,12 @@
 							class="d-block link-dark text-decoration-none dropdown-toggle"
 							data-bs-toggle="dropdown"
 							aria-expanded="false">
-							<img class="bi bi-person rounded-circle"
-							src="{% if user.avatar %}{{ user.avatar.url }}{% else %}{% static 'assets/icons/person.svg' %}{% endif %}" alt="" width="37"
-							height="37"/>
+							<img
+								class="bi bi-person rounded-circle"
+								src="{% if user.avatar %}{{ user.avatar.url }}{% else %}{% static 'assets/icons/person.svg' %}{% endif %}"
+								alt=""
+								width="37"
+								height="37" />
 						</a>
 
 						<ul class="dropdown-menu text-small">
@@ -104,9 +118,7 @@
 			</div>
 		</header>
 
-		<section class="m-0 p-2 position-relative">
-			{% block feed %} {% endblock feed %}
-		</section>
+		<section class="m-0 p-2 position-relative">{% block feed %} {% endblock feed %}</section>
 
 		<footer
 			class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top fixed-bottom px-4">

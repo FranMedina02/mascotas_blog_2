@@ -20,7 +20,7 @@
 					<div class="list-group rounded-0">
 						{% for chat in chats %}
 						<a
-							class="list-group-item list-group-item-action rounded-0"
+							class="list-group-item list-group-item-action rounded-0 {% block is_active %}{% endblock is_active %}"
 							href="{% url 'Single Chat' chat.id_chat %}"
 							aria-current="true">
 							<div class="media">
@@ -35,12 +35,11 @@
 										{% if chat.user_1 == user %} {{chat.user_2.get_username}}
 										{%else %} {{chat.user_1.get_username}} {% endif %}
 									</h6>
-									<small class="small font-weight-bold">25 Dec</small>
+									<small class="small font-weight-bold">{{chat.last_msg.date}}</small>
 								</div>
 								<div class="ms-4">
 									<p class="font-italic mb-0 text-small">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-										sed do eiusmod tempor incididunt ut labore.
+										{{chat.last_msg.message}}
 									</p>
 								</div>
 							</div>
@@ -55,27 +54,6 @@
 		<div class="col-7 px-0 h-100">
 			<div class="px-0 py-0 chat-box bg-white" id="chatBox">
 				{% block conversation %} {% endblock conversation %}
-				<form id="chatBar" action="" class="bg-light" method="POST">
-					{% csrf_token %}
-					<div class="input-group d-flex align-items-center">
-						<input
-							name="message"
-							type="text"
-							placeholder="Type a message"
-							aria-describedby="button-addon2"
-							class="form-control rounded-0 border-0 py-4 bg-light" />
-
-						<div class="input-group-append">
-							<button id="button-addon2" type="submit" class="btn btn-link">
-								<img
-									class="bi"
-									width="24"
-									height="24"
-									src="{% static 'assets/icons/send-fill.svg' %}" />
-							</button>
-						</div>
-					</div>
-				</form>
 			</div>
 		</div>
 	</div>
