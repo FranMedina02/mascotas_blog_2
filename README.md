@@ -4,6 +4,10 @@
 ## Descripcion del Projecto
 Esta red social te permite compartir fotos y publicaciones exclusivamente de tus mascotas.<br><br> Intenta recrear lo que sería el ambiente de Pinterest.
 
+## [Video](https://drive.google.com/file/d/13fZkdxaXEJnBBCzJvcLecNWOXg1gob8j/view?usp=sharing)
+
+
+
 ## Indice
 1. [Estructura](#estructura)
 	1. [Apps](#apps)
