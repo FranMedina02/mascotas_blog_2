@@ -57,7 +57,7 @@ Esta red social te permite compartir fotos y publicaciones exclusivamente de tus
 
 ## Instalacion
 
-<b>Se adjunta un zip con todo el proyecto para solucionar el tema de las imagenes de los posteos y de los avatares. Sino tambien se pueden usar las otras opciones mencionadas posteriormente.</b>
+<b>[Se adjunta un zip con todo el proyecto para solucionar el tema de las imagenes de los posteos y de los avatares. Sino tambien se pueden usar las otras opciones mencionadas posteriormente.](https://drive.google.com/file/d/1fsoOe1a0AldC-zvUCWQEGHKDvxPw91UW/view?usp=sharing)</b>
 
 Esta Branch del repositorio tiene todos los archivos necesarios para usar la pagina en cuanto a bootstrap y templates.<br>
 Lo unico que hay que hacer es instalar requirements.txt
