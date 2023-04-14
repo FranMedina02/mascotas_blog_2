@@ -59,15 +59,8 @@ Esta red social te permite compartir fotos y publicaciones exclusivamente de tus
 
 <b>[Se adjunta un zip con todo el proyecto para solucionar el tema de las imagenes de los posteos y de los avatares. Sino tambien se pueden usar las otras opciones mencionadas posteriormente.](https://drive.google.com/file/d/1F0CSSB1r2oE5E5vIC_dhKX-imf6Z5zo5/view?usp=sharing)</b>
 
-Esta Branch del repositorio tiene todos los archivos necesarios para usar la pagina en cuanto a bootstrap y templates.<br>
+El repositorio *NO* tiene todos los archivos necesarios para usar la pagina en cuanto a bootstrap y base de datos.<br>
 Lo unico que hay que hacer es instalar requirements.txt
-
-Se adjunta la base de datos que ya contiene un superuser 'Profesor'<br>
-Password 'ProfesorCoder123' por si se quieren ver opciones extra.
-
-A su vez en la pagina para el login se puede usar un usuario con mismos atributos para su navegacion.
-
-Para descargar el repositorio se recomienda usar el comando ```git clone --single-branch --branch Tercera-entrega-TP_Final https://github.com/FranMedina02/mascotas_blog_2```
 
 ## Uso de la Pagina
 
